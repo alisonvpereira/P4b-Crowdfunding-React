@@ -1,9 +1,14 @@
 import React from "react";
+import { allProjects } from "../data.js";
 
 
 function HomePage() {
     return (
-        <h1>This is the home page.</h1>
+        <div>
+            {allProjects.map((projectData, key) => {
+                return <div key={key}>{projectData.title}</div>
+            })}
+        </div>
     );
 }
 
