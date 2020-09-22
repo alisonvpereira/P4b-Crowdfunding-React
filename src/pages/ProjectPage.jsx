@@ -13,7 +13,7 @@ function ProjectPage() {
                {oneProject.pledges.map((pledgeData, key) => {
                    return (
                        <li>
-                           ${pledgeData.amount} from {pledgeData.supporter}
+                           {pledgeData.hours} hours from {pledgeData.volunteer}
                        </li>
                    );
                })}
