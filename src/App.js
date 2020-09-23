@@ -13,7 +13,7 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route path="/project"><ProjectPage /></Route>
+          <Route path="/project/:id"><ProjectPage /></Route>
           <Route path="/"><HomePage /></Route>
         </Switch>
       </div>
