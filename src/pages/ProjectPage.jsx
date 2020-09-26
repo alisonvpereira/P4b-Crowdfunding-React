@@ -7,7 +7,6 @@ function ProjectPage() {
     const [projectData, setProjectData] = useState({ pledges: [] });
     const { id } = useParams();
     const date = new Date(projectData.date_created);
-    const readableDate = date.toString();
     // console.log(projectData)
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -19,10 +18,11 @@ function ProjectPage() {
         });
     }, [id]);
     return (
-        <div>
+        <div id="project-page">
            <h2>{projectData.title}</h2> 
-           <h3>Created at: { readableDate } {date.toLocaleDateString()}</h3>
-           <h3>{`Status: ${projectData.is_open === false ? "Closed" : "Active"}`} </h3>
+           <h6>Created on: {date.toLocaleDateString()}</h6>
+           <h6>{`Status: ${projectData.is_open === false ? "Closed" : "Active"}`} </h6>
+           <h2>{projectData.description}</h2>
            <h3>Pledges:</h3>
            <ul>
                {projectData.pledges.map((pledgeData, key) => {

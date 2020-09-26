@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#project-page {
+  margin: 2%;
+}
+
+#project-page h2 {
+  margin-bottom: 2px;
+}
+
+#project-page h6 {
+  margin: 0;
+}
+
+h6 {
+  margin-left: 2%;
+}

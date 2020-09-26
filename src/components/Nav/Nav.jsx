@@ -6,15 +6,20 @@ function Nav() {
 
     return (
     <nav>
-        <Link to="/">Home</Link>
-
+        <div id="nav-username">
         {localStorage.username  ? 
-            <Link to="#">{localStorage.username}</Link> : 
+            <Link to="#">welcome back, {localStorage.username}!</Link> : 
             <Link to="/login">Login</Link>} 
-
+        
         {localStorage.username ?
             <Link to="/logout">Logout</Link> : ""}
-        
+        </div>
+
+        <div id="navbar">        
+            <Link to="/">Home</Link>
+            <Link to="/project">Projects</Link>
+            <Link to="/category">Categories</Link>
+        </div>
     </nav>
     );
 }

@@ -3,17 +3,41 @@ nav {
     background-color: black;
     height: 50px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
+    /* flex-wrap: nowrap; */
     padding: 5px;
     position: sticky;
     top: 0;
     box-shadow: 0px 3px 5px  grey;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    
+}
+
+#nav-username {
+    font-size: 10px;
+    display: contents;
+    text-align: end;
+    
+}
+
+#nav-username a {
+    font-size: 9px;
+    
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    /* border: greenyellow 1px solid; */
+    
+    
 }
 
 nav a {
     color: whitesmoke;
-    align-self: center;
+    align-self: flex-end;
     text-decoration: none;
+    /* border: tomato 1px solid; */
 }
 

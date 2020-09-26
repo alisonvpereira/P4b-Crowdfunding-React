@@ -2,6 +2,17 @@ a {
   text-decoration: none;
 }
 
+#project-list {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 2%;
+  row-gap: 10px;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+
+}
+
 .project-card {
     width: 100%;
     border: 1px solid black;
