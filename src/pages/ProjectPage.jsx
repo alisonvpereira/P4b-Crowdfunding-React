@@ -8,7 +8,7 @@ function ProjectPage() {
     const { id } = useParams();
     const date = new Date(projectData.date_created);
     const readableDate = date.toString();
-    console.log(projectData)
+    // console.log(projectData)
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
         .then((results) => {
@@ -22,13 +22,13 @@ function ProjectPage() {
         <div>
            <h2>{projectData.title}</h2> 
            <h3>Created at: { readableDate } {date.toLocaleDateString()}</h3>
-           <h3>{`Status: ${projectData.is_open == false ? "Closed" : "Active"}`} </h3>
+           <h3>{`Status: ${projectData.is_open === false ? "Closed" : "Active"}`} </h3>
            <h3>Pledges:</h3>
            <ul>
                {projectData.pledges.map((pledgeData, key) => {
                    return (
                        <li>
-                           {pledgeData.hours} hour{pledgeData.hours == 1 ? "" : "s"} from {pledgeData.volunteer} ({pledgeData.skill.join(", ")})
+                           {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from {pledgeData.volunteer} ({pledgeData.skill.join(", ")})
                        </li>
                    );
                })}
