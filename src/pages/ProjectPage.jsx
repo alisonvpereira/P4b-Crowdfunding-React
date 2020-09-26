@@ -6,7 +6,9 @@ import { useParams } from "react-router-dom";
 function ProjectPage() {
     const [projectData, setProjectData] = useState({ pledges: [] });
     const { id } = useParams();
-
+    const date = new Date(projectData.date_created);
+    const readableDate = date.toString();
+    console.log(projectData)
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
         .then((results) => {
@@ -19,14 +21,14 @@ function ProjectPage() {
     return (
         <div>
            <h2>{projectData.title}</h2> 
-           <h3>Created at: {projectData.date_created}</h3>
-           <h3>{`Status: ${projectData.is_open}`}</h3>
+           <h3>Created at: { readableDate } {date.toLocaleDateString()}</h3>
+           <h3>{`Status: ${projectData.is_open == false ? "Closed" : "Active"}`} </h3>
            <h3>Pledges:</h3>
            <ul>
                {projectData.pledges.map((pledgeData, key) => {
                    return (
                        <li>
-                           {pledgeData.hours} hours from {pledgeData.volunteer}
+                           {pledgeData.hours} hour{pledgeData.hours == 1 ? "" : "s"} from {pledgeData.volunteer} ({pledgeData.skill.join(", ")})
                        </li>
                    );
                })}
