@@ -1,5 +1,4 @@
 import React, {useState, useEffect } from "react";
-import { allProjects } from "../data.js";
 import CategoryCard from "../components/CategoryCard/CategoryCard";
 import "../components/CategoryCard/CategoryCard.css";
 
@@ -15,7 +14,6 @@ function CategoryListPage() {
         .then((data) => {
             setCategoryList(data);
         });
-        // setProjectList(allProjects);
     }, []);
     return (
         <div id="category-list">

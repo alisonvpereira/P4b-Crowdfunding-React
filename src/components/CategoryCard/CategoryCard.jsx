@@ -9,10 +9,8 @@ function CategoryCard(props) {
     return (
         <div className="category-card">
         <Link to={`/category/${categoryData.id}`}>
-            <img alt="" src="https://picsum.photos/301" />
-            <h3>{categoryData.name}</h3>
-            {/* <h4>{categoryData.description}</h4> */}
-            {/* <p>{projectData.category.join(", ")}</p> */}
+            <img alt="" src={categoryData.image} />  
+            <h3>{categoryData.name}</h3>    
         </Link>
         </div>
     );

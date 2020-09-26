@@ -4,6 +4,18 @@ a {
 }
 
 
+#category-page {
+  margin: 2%;
+}
+
+#category-page h2 {
+  margin-bottom: 2px;
+}
+
+#category-page h6 {
+  margin: 0;
+}
+
 #category-list {
   /* border: hotpink 1px solid; */
   display: flex;
@@ -37,4 +49,23 @@ a {
     margin: 0;
     /* border: 1px solid black; */
     
+  }
+
+  #category-page {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px hotpink solid; */
+    padding:10px;
+    
+  }
+
+  #category-page img {
+    object-fit: cover;  
+  }
+
+  #category-page-text {
+    /* border: 1px hotpink solid; */
+    padding:10px;
+    width: 75%;
+    text-align: start;
   }

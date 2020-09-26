@@ -1,7 +1,5 @@
-import React, {useState, useEffect } from "react";
-// import { allProjects } from "../data.js";
-import ProjectCard from "../components/ProjectCard/ProjectCard";
-import "../components/ProjectCard/ProjectCard.css";
+import React from "react";
+
 
 
 function HomePage() {
