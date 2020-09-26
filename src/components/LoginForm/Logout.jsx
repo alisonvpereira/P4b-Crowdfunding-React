@@ -8,6 +8,7 @@ function Logout() {
     const handleLogout = () => {
             localStorage.clear()
             history.push("/Login");
+            window.location.reload();
         }
 
     
