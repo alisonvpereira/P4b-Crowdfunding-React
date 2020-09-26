@@ -17,7 +17,7 @@ function ProjectPage() {
         .then((data) => {
             setProjectData(data);
         });
-    }, []);
+    }, [id]);
     return (
         <div>
            <h2>{projectData.title}</h2> 

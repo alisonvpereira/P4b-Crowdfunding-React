@@ -34,12 +34,19 @@ function LoginForm() {
         if (credentials.username && credentials.password) {
             postData().then((response) => {
                 window.localStorage.setItem("token", response.token);
+                window.localStorage.setItem("username", credentials.username);
                 history.push("/");
             });
+            
+            
         }
     };
 
     //template
+    if (localStorage.username) {
+        return <div>{localStorage.username} is logged in</div>;
+    }
+
     return (
         <form>
             <div>
