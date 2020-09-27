@@ -1,43 +1,49 @@
 
 nav {
     background-color: black;
-    /* height: 50px; */
     display: flex;
     flex-direction: column;
-    /* flex-wrap: nowrap; */
     padding: 5px;
     position: sticky;
     top: 0;
-    box-shadow: 0px 3px 5px  grey;
+    box-shadow: 0px 3px 5px  grey; 
 
-    
-}
-
-#nav-username {
-    font-size: 10px;
-    display: contents;
-    text-align: end;
-    
-}
-
-#nav-username a {
-    font-size: 9px;
-    
-}
-
-#navbar {
-    display: flex;
-    justify-content: space-evenly;
-    /* border: greenyellow 1px solid; */
-    margin-bottom: 5px;
-    
-    
 }
 
 nav a {
     color: whitesmoke;
-    align-self: flex-end;
     text-decoration: none;
     /* border: tomato 1px solid; */
 }
+
+
+.Logo {
+    /* border: whitesmoke 1px solid; */
+    float: left;
+    width: 50%;
+    z-index: -1;
+    max-width: 400px;
+}
+
+#nav-username {
+    /* border: greenyellow 1px solid; */
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    vertical-align: top;
+    z-index: 1;
+        
+}
+
+
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;    
+    /* border: greenyellow 1px solid; */ 
+    
+}
+
+
 
