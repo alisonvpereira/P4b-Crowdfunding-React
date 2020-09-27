@@ -28,7 +28,7 @@ function App() {
           <Route path="/category"><CategoryListPage /></Route>
           <Route path="/skills/:id"><SkillPage /></Route>
           <Route path="/skills"><SkillListPage /></Route>
-          <Route path="/users/:id"><UserPage /></Route>
+          <Route path="/users/:username"><UserPage /></Route>
           <Route path="/users"><UserListPage /></Route>
           <Route path="/login"><LoginPage /></Route>
           <Route path="/logout"><LogoutPage /></Route>

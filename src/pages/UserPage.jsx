@@ -5,19 +5,19 @@ import { useParams } from "react-router-dom";
 function UserPage() {
     const [userData, setUserData] = useState([])
         ;
-    const { id } = useParams();
+    const { username } = useParams();
 
 
     console.log(userData)
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}users/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
         .then((results) => {
             return results.json();
         })
         .then((data) => {
             setUserData(data);
         });
-    }, [id]);
+    }, [username]);
     return (
         <div id="user-page">
            <img class="user-card" alt="" src="https://library.kissclipart.com/20181001/wbw/kissclipart-gsmnet-ro-clipart-computer-icons-user-avatar-4898c5072537d6e2.png" />

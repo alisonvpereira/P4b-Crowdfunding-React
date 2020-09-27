@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import "./Nav.css";
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
     <nav>
         <div id="nav-username">
         {localStorage.username  ? 
-            <Link to="#">welcome back, {localStorage.username}!</Link>  : 
+            <Link to={`/users/${localStorage.username}`}>welcome back, {localStorage.username}!</Link>  : 
             <Link to="/login">Login</Link>} 
         <Link to="/users">Profiles</Link>
         <Link to="/skills">Skills</Link>
