@@ -6,8 +6,10 @@ import LogoutPage from "./pages/LogoutPage";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import ProjectListPage from "./pages/ProjectListPage";
-import CategoryListPage from "./pages/CategoryListPage";
 import CategoryPage from "./pages/CategoryPage";
+import CategoryListPage from "./pages/CategoryListPage";
+import SkillPage from "./pages/SkillPage";
+import SkillListPage from "./pages/SkillListPage";
 import UserListPage from "./pages/UserListPage";
 import UserPage from "./pages/UserPage";
 import "./App.css";
@@ -24,8 +26,10 @@ function App() {
           <Route path="/project"><ProjectListPage /></Route>
           <Route path="/category/:id"><CategoryPage /></Route>
           <Route path="/category"><CategoryListPage /></Route>
-          <Route path="/users"><UserListPage /></Route>
+          <Route path="/skills/:id"><SkillPage /></Route>
+          <Route path="/skills"><SkillListPage /></Route>
           <Route path="/users/:id"><UserPage /></Route>
+          <Route path="/users"><UserListPage /></Route>
           <Route path="/login"><LoginPage /></Route>
           <Route path="/logout"><LogoutPage /></Route>
           <Route path="/"><HomePage /></Route>

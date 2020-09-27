@@ -23,6 +23,7 @@ function UserPage() {
            <img class="user-card" alt="" src="https://library.kissclipart.com/20181001/wbw/kissclipart-gsmnet-ro-clipart-computer-icons-user-avatar-4898c5072537d6e2.png" />
            <div id="user-page-text" >
                 <h2>{userData.username}</h2>
+                <p>{userData.email}</p>
 
             </div>
         </div>

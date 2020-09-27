@@ -11,6 +11,7 @@ function Nav() {
             <Link to="#">welcome back, {localStorage.username}!</Link>  : 
             <Link to="/login">Login</Link>} 
         <Link to="/users">Profiles</Link>
+        <Link to="/skills">Skills</Link>
         
         {localStorage.username ?
             <Link to="/logout">Logout</Link> : ""}
