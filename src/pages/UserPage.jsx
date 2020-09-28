@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 function UserPage() {
     const [userData, setUserData] = useState([])
         ;
     const { username } = useParams();
+    const date = new Date(userData.created_at);
 
 
     console.log(userData)
@@ -20,10 +21,22 @@ function UserPage() {
     }, [username]);
     return (
         <div id="user-page">
-           <img class="user-card" alt="" src="https://library.kissclipart.com/20181001/wbw/kissclipart-gsmnet-ro-clipart-computer-icons-user-avatar-4898c5072537d6e2.png" />
+           <img className="user-card" alt="" src={userData.image}/>
            <div id="user-page-text" >
-                <h2>{userData.username}</h2>
-                <p>{userData.email}</p>
+            
+                <pre><h2>
+                {userData.fullname  ? userData.fullname : userData.username}
+                </h2>
+                <p>Member Since: {date.toDateString()} </p>
+
+            
+                <a href="mailto:${userData.email}">
+                <p>{userData.email}</p> 
+                </a></pre>
+                <p>{userData.bio}</p>
+            </div>
+            <div id="user-page-text" >
+
 
             </div>
         </div>

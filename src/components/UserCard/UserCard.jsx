@@ -9,7 +9,7 @@ function UserCard(props) {
     return (
         <div className="user-card">
         <Link to={`/users/${userData.username}`}>
-            <img alt="" src="https://library.kissclipart.com/20181001/wbw/kissclipart-gsmnet-ro-clipart-computer-icons-user-avatar-4898c5072537d6e2.png" />
+            <img alt="" src={userData.image}/>
             <h3 style={{margin:"0"}}>{userData.username}</h3>
         </Link>
         </div>

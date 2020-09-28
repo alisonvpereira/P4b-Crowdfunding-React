@@ -5,7 +5,8 @@ import "../components/UserCard/UserCard.css";
 
 function UserListPage() {
     const [userList, setUserList] = useState([]);
-
+    console.log(userList)
+    
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}users`)
         .then((results) => {
