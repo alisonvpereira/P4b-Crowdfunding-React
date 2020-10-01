@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import { oneProject } from "../data";
 
 function ProjectPage() {
@@ -30,7 +30,12 @@ function ProjectPage() {
           return (
             <li>
               {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
-              {pledgeData.volunteer} ({pledgeData.skill.join(", ")})
+              <Link id="" to={`/users/${pledgeData.volunteer}`}>
+                {pledgeData.volunteer}
+              </Link>{" "}
+              <Link id="" to={`/skills/${pledgeData.skill}`}>
+                ({pledgeData.skill.join(", ")})
+              </Link>
             </li>
           );
         })}

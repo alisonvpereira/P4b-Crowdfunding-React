@@ -23,9 +23,7 @@ function UserPage() {
         <pre>
           <h2>{userData.fullname ? userData.fullname : userData.username}</h2>
           {userData.skills != null && userData.skills.length > 0 && (
-            <h3>
-              <span>{userData.skills.join(", ")}</span>
-            </h3>
+            <h4>{userData.skills.join(", ")}</h4>
           )}
 
           <p>Member Since: {date.toDateString()} </p>
