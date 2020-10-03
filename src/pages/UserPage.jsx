@@ -4,22 +4,20 @@ import { Link, useParams } from "react-router-dom";
 function UserPage() {
   const [userData, setUserData] = useState({
     user: [{}],
-    pledges: [{}],
-    owner_projects: [{}],
   });
   const { username } = useParams();
   const date = new Date(userData.created_at);
 
-  console.log(userData);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
       .then((results) => {
         return results.json();
       })
-      .then((data, user, pledges, owner_projects) => {
-        setUserData(data, user, pledges, owner_projects);
+      .then((data, user) => {
+        setUserData(data, user);
       });
   }, [username]);
+  console.log(userData.user.owner_projects);
   return (
     <div id="user-page">
       <img className="user-card" alt="" src={userData.image} />
@@ -49,18 +47,38 @@ function UserPage() {
 
         <p>{userData.bio}</p>
       </div>
-      <div id="user-page-text">
-        {/* <ul>
-        {userData.user.map((projectData, key) => {
-          return (
-            <li>
-              {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
-              {pledgeData.volunteer} ({pledgeData.skill.join(", ")})
-            </li>
-          );
-        })}
-      </ul> */}
-      </div>
+
+      {userData.user.owner_projects ? (
+        <div id="user-page-body">
+          {userData.user.owner_projects.length > 0 ? (
+            <h3>related projects</h3>
+          ) : (
+            <h3>no related projects</h3>
+          )}
+          {userData.user.owner_projects.map((projectData, i) => (
+            <Link to={`/project/${projectData.id}`}>
+              {projectData.title}
+              {i < userData.user.owner_projects.length - 1 ? "," : ""}
+            </Link>
+          ))}
+        </div>
+      ) : null}
+
+      {userData.user.pledges ? (
+        <div id="user-page-body">
+          {userData.user.pledges.length > 0 ? (
+            <h3>related pledges</h3>
+          ) : (
+            <h3>no related pledges</h3>
+          )}
+          {userData.user.pledges.map((pledge, i) => (
+            <Link to={`/project/${pledge.project_id}`}>
+              {pledge.project_title}
+              {i < userData.user.pledges.length - 1 ? "," : ""}
+            </Link>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

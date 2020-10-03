@@ -7,7 +7,7 @@ function ProjectPage() {
   const { id } = useParams();
   const created_date = new Date(projectData.date_created);
   const closed_date = new Date(projectData.date_updated);
-  console.log(closed_date);
+  console.log(projectData);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
       .then((results) => {
@@ -43,14 +43,14 @@ function ProjectPage() {
             }`}
           </p>
 
-          <a href="">
-            <p>add owner email</p>
+          <a href={`/users/${projectData.owner}`}>
+            <p>Listed by: {projectData.owner}</p>
           </a>
         </pre>
         <p>{projectData.description}</p>
       </div>
       <div id="pledge-list">
-        <h3>Pledges:</h3>
+        <h3>Pledges</h3>
 
         {projectData.pledges.map((pledgeData, key) => {
           return (

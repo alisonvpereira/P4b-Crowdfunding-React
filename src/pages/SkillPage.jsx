@@ -33,8 +33,8 @@ function SkillPage() {
       <div id="user-page-body">
         <h3>
           {skillData.pledges.length > 0
-            ? "Related Projects:"
-            : "No Related Projects"}
+            ? "related projects"
+            : "no related projects"}
         </h3>
 
         {skillData.pledges.map((pledge, i) => (
@@ -48,8 +48,8 @@ function SkillPage() {
       <div id="user-page-body">
         <h3>
           {skillData.pledges.length > 0
-            ? "Related Volunteers:"
-            : "No Related Volunteers"}
+            ? "related volunteers"
+            : "no related volunteers"}
         </h3>
 
         {skillData.pledges.map((pledge, i) => (

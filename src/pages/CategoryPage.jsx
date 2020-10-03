@@ -33,8 +33,8 @@ function CategoryPage() {
       <div id="category-page-body">
         <h3>
           {categoryData.projects.length > 0
-            ? "Related Projects:"
-            : "No Related Projects"}
+            ? "related projects"
+            : "no related projects"}
         </h3>
 
         {categoryData.projects.map((projectData, i) => (
