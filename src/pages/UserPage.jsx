@@ -26,9 +26,19 @@ function UserPage() {
       <div id="user-page-text">
         <pre>
           <h2>{userData.fullname ? userData.fullname : userData.username}</h2>
-          {userData.skills != null && userData.skills.length > 0 && (
-            <h4>{userData.skills.join(", ")}</h4>
-          )}
+
+          <div className="categories">
+            {userData.skills != null
+              ? userData.skills.map((skill, i) => (
+                  <Link to={`/skills/${skill}`}>
+                    <h4>
+                      {skill}
+                      {i < userData.skills.length - 1 ? "," : ""}
+                    </h4>
+                  </Link>
+                ))
+              : "No skills added"}
+          </div>
 
           <p>Member Since: {date.toDateString()} </p>
 
