@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function UserPage() {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({
+    pledges: {},
+    owner_projects: {},
+  });
   const { username } = useParams();
   const date = new Date(userData.created_at);
 
-  console.log(userData);
+  console.log(userData.user);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
       .then((results) => {
@@ -37,7 +40,7 @@ function UserPage() {
       </div>
       <div id="user-page-text">
         {/* <ul>
-        {userData.projects.map((projectData, key) => {
+        {userData.user.map((projectData, key) => {
           return (
             <li>
               {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
