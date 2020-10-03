@@ -3,6 +3,10 @@
   
 } */
 
+/* * {
+  border: red 1px solid;
+} */
+
 #category-page {
   margin: 2%;
 }
@@ -69,4 +73,9 @@
   /* border: 1px hotpink solid; */
   padding: 10px;
   text-align: start;
+}
+
+#category-page-body {
+  /* display: block; */
+  margin-left: 3%;
 }

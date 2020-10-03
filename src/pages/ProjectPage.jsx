@@ -23,6 +23,19 @@ function ProjectPage() {
       <h6>
         {`Status: ${projectData.is_open === false ? "Closed" : "Active"}`}{" "}
       </h6>
+
+      <div class="categories">
+        {projectData.category != null
+          ? projectData.category.map((cat, i) => (
+              <Link to={`/category/${cat}`}>
+                <h5>
+                  {cat}
+                  {i < projectData.category.length - 1 ? ", " : ""}
+                </h5>
+              </Link>
+            ))
+          : "No categories"}
+      </div>
       <h2>{projectData.description}</h2>
       <h3>Pledges:</h3>
       <ul>

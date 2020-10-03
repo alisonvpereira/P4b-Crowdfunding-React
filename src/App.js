@@ -14,7 +14,6 @@ import UserListPage from "./pages/UserListPage";
 import UserPage from "./pages/UserPage";
 import "./App.css";
 
-
 function App() {
   return (
     <Router>
@@ -22,17 +21,39 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route path="/project/:id"><ProjectPage /></Route>
-          <Route path="/project"><ProjectListPage /></Route>
-          <Route path="/category/:id"><CategoryPage /></Route>
-          <Route path="/category"><CategoryListPage /></Route>
-          <Route path="/skills/:id"><SkillPage /></Route>
-          <Route path="/skills"><SkillListPage /></Route>
-          <Route path="/users/:username"><UserPage /></Route>
-          <Route path="/users"><UserListPage /></Route>
-          <Route path="/login"><LoginPage /></Route>
-          <Route path="/logout"><LogoutPage /></Route>
-          <Route path="/"><HomePage /></Route>
+          <Route path="/project/:id">
+            <ProjectPage />
+          </Route>
+          <Route path="/project">
+            <ProjectListPage />
+          </Route>
+          <Route path="/category/:name">
+            <CategoryPage />
+          </Route>
+          <Route path="/category">
+            <CategoryListPage />
+          </Route>
+          <Route path="/skills/:name">
+            <SkillPage />
+          </Route>
+          <Route path="/skills">
+            <SkillListPage />
+          </Route>
+          <Route path="/users/:username">
+            <UserPage />
+          </Route>
+          <Route path="/users">
+            <UserListPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/logout">
+            <LogoutPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
         </Switch>
       </div>
     </Router>
