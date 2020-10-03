@@ -58,10 +58,17 @@ function ProjectPage() {
                 {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
                 <Link id="" to={`/users/${pledgeData.volunteer}`}>
                   {pledgeData.volunteer}
-                </Link>{" "}
-                <Link id="" to={`/skills/${pledgeData.skill}`}>
-                  ({pledgeData.skill.join(", ")})
                 </Link>
+                {" ("}
+                {pledgeData.skill != null
+                  ? pledgeData.skill.map((skill, i) => (
+                      <Link to={`/skills/${skill}`}>
+                        {skill}
+                        {i < pledgeData.skill.length - 1 ? ", " : ""}
+                      </Link>
+                    ))
+                  : ""}
+                {")"}
               </li>
             );
           })}

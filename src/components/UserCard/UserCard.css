@@ -8,6 +8,10 @@ a {
 
 #user-page {
   margin: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px hotpink solid; */
+  padding: 10px;
 }
 
 #user-page h2 {
@@ -54,13 +58,6 @@ a {
 .user-card h3 {
   margin: 0;
   /* border: 1px solid black; */
-}
-
-#user-page {
-  display: flex;
-  flex-wrap: wrap;
-  /* border: 1px hotpink solid; */
-  padding: 10px;
 }
 
 #user-page img {

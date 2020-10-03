@@ -19,32 +19,32 @@ function CategoryPage() {
         setCategoryData(data);
       });
   }, [name]);
-  // console.log(projects);
+  console.log(categoryData.projects);
   return (
-    <div>
-      <div id="category-page">
-        <img className="category-card" alt="" src={categoryData.image} />
-        <div id="category-page-text">
-          <h2>{categoryData.name}</h2>
-          <h6>Created: {date.toDateString()} </h6>
-          <h6>Last Updated: {date_updated.toDateString()} </h6>
-          <p>{categoryData.description}</p>
-        </div>
+    <div id="category-page">
+      <img className="category-card" alt="" src={categoryData.image} />
+      <div id="category-page-text">
+        <h2>{categoryData.name}</h2>
+        <h6>Created: {date.toDateString()} </h6>
+        <h6>Last Updated: {date_updated.toDateString()} </h6>
+        <p>{categoryData.description}</p>
       </div>
-      <div>
-        <div id="category-page-body">
-          <h3>Related Projects:</h3>
 
-          <ul>
-            {categoryData.projects.map((projectData, key) => {
-              return (
-                <Link to={`/project/${projectData.id}`}>
-                  <li>{projectData.title}</li>
-                </Link>
-              );
-            })}
-          </ul>
-        </div>
+      <div id="category-page-body">
+        <h3>
+          {categoryData.projects.length > 0
+            ? "Related Projects:"
+            : "No Related Projects"}
+        </h3>
+        <ul>
+          {categoryData.projects.map((projectData, key) => {
+            return (
+              <Link to={`/project/${projectData.id}`}>
+                <li>{projectData.title}</li>
+              </Link>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

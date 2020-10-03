@@ -9,6 +9,10 @@
 
 #category-page {
   margin: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px hotpink solid; */
+  padding: 10px;
 }
 
 #category-page h2 {
@@ -55,14 +59,6 @@
   font-size: medium;
 }
 
-#category-page {
-  display: inline-flex;
-  flex-wrap: nowrap;
-  /* border: 1px hotpink solid; */
-  padding: 10px;
-  align-items: center;
-}
-
 #category-page img {
   flex-shrink: 0;
   object-fit: cover;
@@ -73,6 +69,7 @@
   /* border: 1px hotpink solid; */
   padding: 10px;
   text-align: start;
+  width: 70%;
 }
 
 #category-page-body {
