@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import ProfileUpdateForm from "../components/Forms/ProfileUpdateForm";
 
 function UserPage() {
   const [userData, setUserData] = useState({
@@ -78,6 +79,9 @@ function UserPage() {
             </Link>
           ))}
         </div>
+      ) : null}
+      {userData.user.username === localStorage.username ? (
+        <ProfileUpdateForm />
       ) : null}
     </div>
   );
