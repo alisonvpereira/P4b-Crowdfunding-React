@@ -49,30 +49,29 @@ function ProjectPage() {
         </pre>
         <p>{projectData.description}</p>
       </div>
-      <div id="category-page-body">
+      <div id="pledge-list">
         <h3>Pledges:</h3>
-        <ul>
-          {projectData.pledges.map((pledgeData, key) => {
-            return (
-              <li>
-                {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
-                <Link id="" to={`/users/${pledgeData.volunteer}`}>
-                  {pledgeData.volunteer}
-                </Link>
-                {" ("}
-                {pledgeData.skill != null
-                  ? pledgeData.skill.map((skill, i) => (
-                      <Link to={`/skills/${skill}`}>
-                        {skill}
-                        {i < pledgeData.skill.length - 1 ? ", " : ""}
-                      </Link>
-                    ))
-                  : ""}
-                {")"}
-              </li>
-            );
-          })}
-        </ul>
+
+        {projectData.pledges.map((pledgeData, key) => {
+          return (
+            <div id="pledge-list">
+              {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
+              <Link id="" to={`/users/${pledgeData.volunteer}`}>
+                {pledgeData.volunteer}
+              </Link>
+              {" ("}
+              {pledgeData.skill != null
+                ? pledgeData.skill.map((skill, i) => (
+                    <Link to={`/skills/${skill}`}>
+                      {skill}
+                      {i < pledgeData.skill.length - 1 ? "," : ""}
+                    </Link>
+                  ))
+                : ""}
+              {")"}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

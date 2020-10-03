@@ -19,7 +19,7 @@ function CategoryPage() {
         setCategoryData(data);
       });
   }, [name]);
-  console.log(categoryData.projects);
+  // console.log(categoryData.projects);
   return (
     <div id="category-page">
       <img className="category-card" alt="" src={categoryData.image} />
@@ -36,15 +36,13 @@ function CategoryPage() {
             ? "Related Projects:"
             : "No Related Projects"}
         </h3>
-        <ul>
-          {categoryData.projects.map((projectData, key) => {
-            return (
-              <Link to={`/project/${projectData.id}`}>
-                <li>{projectData.title}</li>
-              </Link>
-            );
-          })}
-        </ul>
+
+        {categoryData.projects.map((projectData, i) => (
+          <Link to={`/project/${projectData.id}`}>
+            {projectData.title}
+            {i < categoryData.projects.length - 1 ? "," : ""}
+          </Link>
+        ))}
       </div>
     </div>
   );

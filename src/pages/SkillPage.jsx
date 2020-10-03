@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function SkillPage() {
-  const [skillData, setSkillData] = useState([]);
+  const [skillData, setSkillData] = useState({
+    pledges: [{}],
+  });
   const { name } = useParams();
   const date = new Date(skillData.created_at);
   const date_updated = new Date(skillData.updated_at);
@@ -17,6 +19,7 @@ function SkillPage() {
         setSkillData(data);
       });
   }, [name]);
+  console.log(skillData.pledges);
   return (
     <div id="category-page">
       <img className="category-card" alt="" src={skillData.image} />
@@ -25,6 +28,36 @@ function SkillPage() {
         <h6>Created: {date.toDateString()} </h6>
         <h6>Last Updated: {date_updated.toDateString()} </h6>
         <p>{skillData.description}</p>
+      </div>
+
+      <div id="user-page-body">
+        <h3>
+          {skillData.pledges.length > 0
+            ? "Related Projects:"
+            : "No Related Projects"}
+        </h3>
+
+        {skillData.pledges.map((pledge, i) => (
+          <Link to={`/project/${pledge.project_id}`}>
+            {pledge.project_title}
+            {i < skillData.pledges.length - 1 ? "," : ""}
+          </Link>
+        ))}
+      </div>
+
+      <div id="user-page-body">
+        <h3>
+          {skillData.pledges.length > 0
+            ? "Related Volunteers:"
+            : "No Related Volunteers"}
+        </h3>
+
+        {skillData.pledges.map((pledge, i) => (
+          <Link to={`/users/${pledge.volunteer}`}>
+            {pledge.volunteer}
+            {i < skillData.pledges.length - 1 ? "," : ""}
+          </Link>
+        ))}
       </div>
     </div>
   );
