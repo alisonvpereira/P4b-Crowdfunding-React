@@ -1,9 +1,13 @@
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
 #project-page {
   margin: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px hotpink solid; */
+  padding: 10px;
 }
 
 #project-page h2 {
@@ -45,4 +49,9 @@ a {
 .project-category {
   display: flex;
   justify-content: space-between;
+}
+
+.categories a {
+  display: inline-flex;
+  margin-right: 3px;
 }

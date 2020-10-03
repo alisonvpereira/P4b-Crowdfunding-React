@@ -5,8 +5,9 @@ import { Link, useParams } from "react-router-dom";
 function ProjectPage() {
   const [projectData, setProjectData] = useState({ pledges: [] });
   const { id } = useParams();
-  const date = new Date(projectData.date_created);
-  console.log(projectData);
+  const created_date = new Date(projectData.date_created);
+  const closed_date = new Date(projectData.date_updated);
+  console.log(closed_date);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
       .then((results) => {
@@ -17,42 +18,55 @@ function ProjectPage() {
       });
   }, [id]);
   return (
-    <div id="project-page">
-      <h2>{projectData.title}</h2>
-      <h6>Created on: {date.toLocaleDateString()}</h6>
-      <h6>
-        {`Status: ${projectData.is_open === false ? "Closed" : "Active"}`}{" "}
-      </h6>
+    <div id="user-page">
+      <img className="user-card" alt="" src={projectData.image} />
+      <div id="user-page-text">
+        <pre>
+          <h2>{projectData.title}</h2>
+          <div class="categories">
+            {projectData.category != null
+              ? projectData.category.map((cat, i) => (
+                  <Link to={`/category/${cat}`}>
+                    <h4>
+                      {cat}
+                      {i < projectData.category.length - 1 ? "," : ""}
+                    </h4>
+                  </Link>
+                ))
+              : "No categories"}
+          </div>
+          <p>
+            {`${
+              projectData.is_open === false
+                ? `Closed ${closed_date.toDateString()}`
+                : `Active since ${created_date.toDateString()}`
+            }`}
+          </p>
 
-      <div class="categories">
-        {projectData.category != null
-          ? projectData.category.map((cat, i) => (
-              <Link to={`/category/${cat}`}>
-                <h5>
-                  {cat}
-                  {i < projectData.category.length - 1 ? ", " : ""}
-                </h5>
-              </Link>
-            ))
-          : "No categories"}
+          <a href="">
+            <p>add owner email</p>
+          </a>
+        </pre>
+        <p>{projectData.description}</p>
       </div>
-      <h2>{projectData.description}</h2>
-      <h3>Pledges:</h3>
-      <ul>
-        {projectData.pledges.map((pledgeData, key) => {
-          return (
-            <li>
-              {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
-              <Link id="" to={`/users/${pledgeData.volunteer}`}>
-                {pledgeData.volunteer}
-              </Link>{" "}
-              <Link id="" to={`/skills/${pledgeData.skill}`}>
-                ({pledgeData.skill.join(", ")})
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <div id="category-page-body">
+        <h3>Pledges:</h3>
+        <ul>
+          {projectData.pledges.map((pledgeData, key) => {
+            return (
+              <li>
+                {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
+                <Link id="" to={`/users/${pledgeData.volunteer}`}>
+                  {pledgeData.volunteer}
+                </Link>{" "}
+                <Link id="" to={`/skills/${pledgeData.skill}`}>
+                  ({pledgeData.skill.join(", ")})
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

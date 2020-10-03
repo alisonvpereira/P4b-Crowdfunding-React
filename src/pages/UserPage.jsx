@@ -3,20 +3,21 @@ import { Link, useParams } from "react-router-dom";
 
 function UserPage() {
   const [userData, setUserData] = useState({
-    pledges: {},
-    owner_projects: {},
+    user: [{}],
+    pledges: [{}],
+    owner_projects: [{}],
   });
   const { username } = useParams();
   const date = new Date(userData.created_at);
 
-  console.log(userData.user);
+  console.log(userData);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
       .then((results) => {
         return results.json();
       })
-      .then((data) => {
-        setUserData(data);
+      .then((data, user, pledges, owner_projects) => {
+        setUserData(data, user, pledges, owner_projects);
       });
   }, [username]);
   return (
@@ -31,8 +32,8 @@ function UserPage() {
 
           <p>Member Since: {date.toDateString()} </p>
 
-          <a href="mailto:${userData.email}">
-            <p>{userData.email}</p>
+          <a href="mailto:${userData.user.email}">
+            <p>{userData.user.email}</p>
           </a>
         </pre>
 
