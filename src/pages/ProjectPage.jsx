@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import PledgeForm from "../components/Forms/PledgeForm";
 import ProgressBar from "../components/ProjectCard/ProgressBar";
 // import { oneProject } from "../data";
 
@@ -21,6 +22,7 @@ function ProjectPage() {
         setProjectData(data);
       });
   }, [id]);
+  window.localStorage.setItem("project_id", projectData.id);
   return (
     <div id="user-page">
       <img className="user-card" alt="" src={projectData.image} />
@@ -57,9 +59,12 @@ function ProjectPage() {
       <div id="pledge-list">
         <h3>
           {projectData.total_pledge_hours < 1 ? (
-            <Link to={`/pledges`}>add the first a pledge</Link>
+            "add the first a pledge"
           ) : (
-            "pledges"
+            <span>
+              {projectData.total_pledge_hours} out of {projectData.goal_hours}{" "}
+              hours pledged so far
+            </span>
           )}
         </h3>
         {projectData.pledges.map((pledgeData, key) => {
@@ -81,16 +86,14 @@ function ProjectPage() {
                   : ""}
                 {")"}
               </p>
-              <br></br>
-              {projectData.total_pledge_hours < 1 ? null : (
-                <h4>
-                  {projectData.total_pledge_hours} out of{" "}
-                  {projectData.goal_hours} hours pledged so far
-                </h4>
-              )}
             </div>
           );
         })}
+      </div>
+
+      <div id="pledge-list">
+        {projectData.total_pledge_hours > 1 ? <h3>add a pledge</h3> : null}
+        <PledgeForm />
       </div>
     </div>
   );

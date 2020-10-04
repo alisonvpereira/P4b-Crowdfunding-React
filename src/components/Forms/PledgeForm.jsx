@@ -4,8 +4,9 @@ import { useParams, useHistory } from "react-router-dom";
 function PledgeForm() {
   //variables
 
-  const { id } = useParams;
+  const { id } = useParams();
   const [skilllist, setSkillList] = useState([]);
+  const [projectlist, setProjectList] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}skills/`)
@@ -18,11 +19,23 @@ function PledgeForm() {
   }, []);
   console.log(skilllist);
 
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}projects/`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setProjectList(data);
+      });
+  }, []);
+  console.log(projectlist);
+
   const [credentials, setCredentials] = useState({
     hours: "",
     comment: "",
     anonymous: "",
-    project_id: "",
+    // project_id: `${localStorage.project_id ? localStorage.project_id : ""}`,
+    project_id: id,
     skill: [],
   });
 
@@ -65,7 +78,8 @@ function PledgeForm() {
       postData().then((response) => {
         console.log(response);
         history.push(`/projects/${credentials.project_id}`);
-        // window.location.reload();
+
+        window.location.reload();
       });
     }
   };
@@ -78,7 +92,7 @@ function PledgeForm() {
           <input
             type="text"
             id="comment"
-            placeholder="What is the comment of your pledge?"
+            placeholder="add a comment"
             onChange={handleChange}
           />
         </div>
@@ -86,10 +100,6 @@ function PledgeForm() {
         <div>
           <label htmlFor="hours">hours:</label>
           <input type="number" id="hours" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="project_id">project_id:</label>
-          <input type="number" id="project_id" onChange={handleChange} />
         </div>
 
         <div>
@@ -113,7 +123,21 @@ function PledgeForm() {
         </div>
 
         <div>
-          <label htmlFor="skill">skills:</label>
+          {/* <label htmlFor="project_id">project:</label> */}
+          {/* <select
+            type="dropdown"
+            defaultValue={id}
+            id="project_id"
+            placeholder="project_id"
+            onChange={handleChange}
+          >
+            {projectlist.map((s) => (
+              <option key={s.title} value={s.id}>
+                {s.title}
+              </option>
+            ))}
+          </select> */}
+          <label htmlFor="skill">skill:</label>
           <select
             type="dropdown"
             id="skill"
@@ -132,7 +156,6 @@ function PledgeForm() {
           Submit
         </button>
       </form>
-      {id}
     </div>
   );
 }
