@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import ProgressBar from "../components/ProjectCard/ProgressBar";
 // import { oneProject } from "../data";
 
 function ProjectPage() {
   const [projectData, setProjectData] = useState({ pledges: [] });
   const { id } = useParams();
+  const progress = Math.round(
+    (projectData.total_pledge_hours / projectData.goal_hours) * 100
+  );
   const created_date = new Date(projectData.date_created);
   const closed_date = new Date(projectData.date_updated);
-  console.log(projectData);
+  console.log(projectData.total_pledge_hours);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
       .then((results) => {
@@ -48,27 +52,40 @@ function ProjectPage() {
           </a>
         </pre>
         <p>{projectData.description}</p>
+        <ProgressBar progress={progress} className="progress-bar" />
       </div>
       <div id="pledge-list">
-        <h3>Pledges</h3>
-
+        <h3>
+          {projectData.total_pledge_hours < 1 ? (
+            <Link to="">add a pledge</Link>
+          ) : (
+            "pledges"
+          )}
+        </h3>
         {projectData.pledges.map((pledgeData, key) => {
           return (
             <div id="pledge-list">
-              {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
-              <Link id="" to={`/users/${pledgeData.volunteer}`}>
-                {pledgeData.volunteer}
-              </Link>
-              {" ("}
-              {pledgeData.skill != null
-                ? pledgeData.skill.map((skill, i) => (
-                    <Link to={`/skills/${skill}`}>
-                      {skill}
-                      {i < pledgeData.skill.length - 1 ? "," : ""}
-                    </Link>
-                  ))
-                : ""}
-              {")"}
+              <p>
+                {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
+                <Link id="" to={`/users/${pledgeData.volunteer}`}>
+                  {pledgeData.volunteer}
+                </Link>
+                {" ("}
+                {pledgeData.skill != null
+                  ? pledgeData.skill.map((skill, i) => (
+                      <Link to={`/skills/${skill}`}>
+                        {skill}
+                        {i < pledgeData.skill.length - 1 ? "," : ""}
+                      </Link>
+                    ))
+                  : ""}
+                {")"}
+              </p>
+              <br></br>
+              <h4>
+                {projectData.total_pledge_hours} out of {projectData.goal_hours}{" "}
+                hours pledged so far
+              </h4>
             </div>
           );
         })}
