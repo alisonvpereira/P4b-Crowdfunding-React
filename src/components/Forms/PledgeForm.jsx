@@ -23,23 +23,21 @@ function PledgeForm() {
     comment: "",
     anonymous: "",
     project_id: "",
-  });
-
-  const [skill, setSkill] = useState({
     skill: [],
   });
 
   // methods
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setCredentials((prevCredentials) => ({
-      ...prevCredentials,
-      [id]: value,
-    }));
-    setSkill((prevSkill) => ({
-      ...prevSkill,
-      [id]: [value],
-    }));
+    id === "skill"
+      ? setCredentials((prevCredentials) => ({
+          ...prevCredentials,
+          [id]: [value],
+        }))
+      : setCredentials((prevCredentials) => ({
+          ...prevCredentials,
+          [id]: value,
+        }));
   };
 
   const history = useHistory();
@@ -66,7 +64,7 @@ function PledgeForm() {
 
       postData().then((response) => {
         console.log(response);
-        // history.push(`/projects/${credentials.project_id}`);
+        history.push(`/projects/${credentials.project_id}`);
         // window.location.reload();
       });
     }
@@ -118,7 +116,6 @@ function PledgeForm() {
           <label htmlFor="skill">skills:</label>
           <select
             type="dropdown"
-            // multiple={true}
             id="skill"
             placeholder="skill"
             onChange={handleChange}

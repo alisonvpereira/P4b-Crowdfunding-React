@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import PledgeForm from "../components/Forms/PledgeForm";
 import ProgressBar from "../components/ProjectCard/ProgressBar";
 // import { oneProject } from "../data";
 
@@ -57,7 +56,11 @@ function ProjectPage() {
       </div>
       <div id="pledge-list">
         <h3>
-          {projectData.total_pledge_hours < 1 ? <PledgeForm /> : "pledges"}
+          {projectData.total_pledge_hours < 1 ? (
+            <Link to={`/pledges`}>add the first a pledge</Link>
+          ) : (
+            "pledges"
+          )}
         </h3>
         {projectData.pledges.map((pledgeData, key) => {
           return (
@@ -78,14 +81,16 @@ function ProjectPage() {
                   : ""}
                 {")"}
               </p>
+              <br></br>
+              {projectData.total_pledge_hours < 1 ? null : (
+                <h4>
+                  {projectData.total_pledge_hours} out of{" "}
+                  {projectData.goal_hours} hours pledged so far
+                </h4>
+              )}
             </div>
           );
         })}
-        <br></br>
-        <h4>
-          {projectData.total_pledge_hours} out of {projectData.goal_hours} hours
-          pledged so far
-        </h4>
       </div>
     </div>
   );
