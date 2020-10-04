@@ -1,10 +1,8 @@
 import React from "react";
-import Logout from "../components/LoginForm/Logout";
-
+import Logout from "../components/Forms/Logout";
 
 function LogoutPage() {
-    return <Logout />;
-
+  return <Logout />;
 }
 
 export default LogoutPage;

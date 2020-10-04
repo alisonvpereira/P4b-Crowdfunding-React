@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import logo from "./skillender-logo-blk.png";
-import Logout from "../LoginForm/Logout";
+import Logout from "../Forms/Logout";
 
 function Nav() {
   return (

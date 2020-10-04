@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import PledgeForm from "../components/Forms/PledgeForm";
 import ProgressBar from "../components/ProjectCard/ProgressBar";
 // import { oneProject } from "../data";
 
@@ -11,7 +12,7 @@ function ProjectPage() {
   );
   const created_date = new Date(projectData.date_created);
   const closed_date = new Date(projectData.date_updated);
-  console.log(projectData.total_pledge_hours);
+  // console.log(projectData.total_pledge_hours);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
       .then((results) => {
@@ -27,7 +28,7 @@ function ProjectPage() {
       <div id="user-page-text">
         <pre>
           <h2>{projectData.title}</h2>
-          <div class="categories">
+          <div className="categories">
             {projectData.category != null
               ? projectData.category.map((cat, i) => (
                   <Link to={`/category/${cat}`}>
@@ -56,11 +57,7 @@ function ProjectPage() {
       </div>
       <div id="pledge-list">
         <h3>
-          {projectData.total_pledge_hours < 1 ? (
-            <Link to="">add a pledge</Link>
-          ) : (
-            "pledges"
-          )}
+          {projectData.total_pledge_hours < 1 ? <PledgeForm /> : "pledges"}
         </h3>
         {projectData.pledges.map((pledgeData, key) => {
           return (
@@ -81,14 +78,14 @@ function ProjectPage() {
                   : ""}
                 {")"}
               </p>
-              <br></br>
-              <h4>
-                {projectData.total_pledge_hours} out of {projectData.goal_hours}{" "}
-                hours pledged so far
-              </h4>
             </div>
           );
         })}
+        <br></br>
+        <h4>
+          {projectData.total_pledge_hours} out of {projectData.goal_hours} hours
+          pledged so far
+        </h4>
       </div>
     </div>
   );
