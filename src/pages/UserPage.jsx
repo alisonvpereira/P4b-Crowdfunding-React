@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import ProfileUpdateForm from "../components/Forms/ProfileUpdateForm";
 
 function UserPage() {
   const [userData, setUserData] = useState({
@@ -57,7 +56,7 @@ function UserPage() {
             <h3>no related projects</h3>
           )}
           {userData.user.owner_projects.map((projectData, i) => (
-            <Link to={`/project/${projectData.id}`}>
+            <Link to={`/projects/${projectData.id}`}>
               {projectData.title}
               {i < userData.user.owner_projects.length - 1 ? "," : ""}
             </Link>
@@ -73,16 +72,16 @@ function UserPage() {
             <h3>no related pledges</h3>
           )}
           {userData.user.pledges.map((pledge, i) => (
-            <Link to={`/project/${pledge.project_id}`}>
+            <Link to={`/projects/${pledge.project_id}`}>
               {pledge.project_title}
               {i < userData.user.pledges.length - 1 ? "," : ""}
             </Link>
           ))}
         </div>
       ) : null}
-      {userData.user.username === localStorage.username ? (
+      {/* {userData.user.username === localStorage.username ? (
         <ProfileUpdateForm />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

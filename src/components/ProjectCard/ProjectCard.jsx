@@ -1,21 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ProgressBar from "./ProgressBar";
 
 function ProjectCard(props) {
-    //variables
-    const { projectData } = props;
+  //variables
+  const { projectData } = props;
+  const progress = Math.round(
+    (projectData.total_pledge_hours / projectData.goal_hours) * 100
+  );
 
-    //template
-    return (
-        <div className="project-card">
-        <Link to={`/project/${projectData.id}`}>
-            <img alt="" src={projectData.image} />
-            <h3 style={{margin:"0"}}>{projectData.title}</h3>
-            <h4 style={{margin:"0"}}>by {projectData.owner}</h4>
-            <p style={{margin:"5px"}}>{projectData.category.join(", ")}</p>
-        </Link>
-        </div>
-    );
+  //template
+  return (
+    <div className="project-card">
+      <Link to={`/projects/${projectData.id}`}>
+        <img alt="" src={projectData.image} />
+        <ProgressBar progress={progress} className="progress-bar" />
+        <h3 style={{ margin: "0" }}>{projectData.title}</h3>
+        {/* <h4 style={{ margin: "0" }}>by {projectData.owner}</h4> */}
+        <p style={{ margin: "5px" }}>{projectData.category.join(", ")}</p>
+      </Link>
+    </div>
+  );
 }
 
 export default ProjectCard;

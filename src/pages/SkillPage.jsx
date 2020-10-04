@@ -38,7 +38,7 @@ function SkillPage() {
         </h3>
 
         {skillData.pledges.map((pledge, i) => (
-          <Link to={`/project/${pledge.project_id}`}>
+          <Link to={`/projects/${pledge.project_id}`}>
             {pledge.project_title}
             {i < skillData.pledges.length - 1 ? "," : ""}
           </Link>

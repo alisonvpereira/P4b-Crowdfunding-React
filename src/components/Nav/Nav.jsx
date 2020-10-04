@@ -24,7 +24,7 @@ function Nav() {
       </div>
 
       <div id="navbar">
-        <Link to="/project">Projects</Link>
+        <Link to="/projects">Projects</Link>
         <Link to="/category">Categories</Link>
         <Link to="/users">Profiles</Link>
         <Link to="/skills">Skills</Link>

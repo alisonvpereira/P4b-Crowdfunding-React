@@ -38,7 +38,7 @@ function CategoryPage() {
         </h3>
 
         {categoryData.projects.map((projectData, i) => (
-          <Link to={`/project/${projectData.id}`}>
+          <Link to={`/projects/${projectData.id}`}>
             {projectData.title}
             {i < categoryData.projects.length - 1 ? "," : ""}
           </Link>
