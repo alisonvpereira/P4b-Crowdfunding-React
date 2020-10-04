@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserCard from "../components/UserCard/UserCard";
 import "../components/UserCard/UserCard.css";
+import { useHistory } from "react-router-dom";
 
 function UserListPage() {
   const [userList, setUserList] = useState([]);

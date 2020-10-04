@@ -12,6 +12,7 @@ function ProjectPage() {
   );
   const created_date = new Date(projectData.date_created);
   const closed_date = new Date(projectData.date_updated);
+
   // console.log(projectData.total_pledge_hours);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -23,6 +24,7 @@ function ProjectPage() {
       });
   }, [id]);
   window.localStorage.setItem("project_id", projectData.id);
+
   return (
     <div id="user-page">
       <img className="user-card" alt="" src={projectData.image} />

@@ -7,10 +7,17 @@ function SkillCard(props) {
   //template
   return (
     <div className="category-card">
-      <Link to={`/skills/${skillData.name}`}>
-        <img alt="" src={skillData.image} />
-        <h3>{skillData.name}</h3>
-      </Link>
+      {localStorage.username ? (
+        <Link to={`/skills/${skillData.name}`}>
+          <img alt="" src={skillData.image} />
+          <h3>{skillData.name}</h3>
+        </Link>
+      ) : (
+        <Link to={`/login`}>
+          <img alt="" src={skillData.image} />
+          <h3>{skillData.name}</h3>
+        </Link>
+      )}
     </div>
   );
 }

@@ -10,15 +10,23 @@ function ProjectCard(props) {
   );
 
   //template
+
   return (
     <div className="project-card">
-      <Link to={`/projects/${projectData.id}`}>
-        <img alt="" src={projectData.image} />
-        <ProgressBar progress={progress} className="progress-bar" />
-        <h3 style={{ margin: "0" }}>{projectData.title}</h3>
-        {/* <h4 style={{ margin: "0" }}>by {projectData.owner}</h4> */}
-        <p style={{ margin: "5px" }}>{projectData.category.join(", ")}</p>
-      </Link>
+      {localStorage.username ? (
+        <Link to={`/projects/${projectData.id}`}>
+          <img alt="" src={projectData.image} />
+          <ProgressBar progress={progress} className="progress-bar" />
+          <h3 style={{ margin: "0" }}>{projectData.title}</h3>
+          {/* <h4 style={{ margin: "0" }}>by {projectData.owner}</h4> */}
+          <p style={{ margin: "5px" }}>{projectData.category.join(", ")}</p>
+        </Link>
+      ) : (
+        <Link to={`/login`}>
+          <img alt="" src={projectData.image} />
+          <h3 style={{ margin: "0" }}>{projectData.title}</h3>
+        </Link>
+      )}
     </div>
   );
 }

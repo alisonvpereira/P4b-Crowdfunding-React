@@ -26,7 +26,7 @@ function Nav() {
       <div id="navbar">
         <Link to="/projects">Projects</Link>
         <Link to="/category">Categories</Link>
-        <Link to="/users">Profiles</Link>
+        {localStorage.username ? <Link to="/users">Profiles</Link> : ""}
         <Link to="/skills">Skills</Link>
       </div>
     </nav>
