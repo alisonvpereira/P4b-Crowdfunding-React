@@ -5,6 +5,7 @@ import logo from "./skillender-logo-blk.png";
 import Logout from "../Forms/Logout";
 import useModal from "../Modals/useModal";
 import LoginModal from "../Modals/LoginModal";
+import ProjectModal from "../Modals/ProjectModal";
 
 function Nav() {
   const { isShowing, toggle } = useModal();
@@ -15,9 +16,23 @@ function Nav() {
           <img alt="" src={logo} className="Logo" />
         </Link>
         {localStorage.username ? (
-          <Link id="nav-username" to={`/users/${localStorage.username}`}>
-            welcome back, {localStorage.username}!
-          </Link>
+          <div>
+            <div>
+              <Link id="nav-username" to={`/users/${localStorage.username}`}>
+                welcome back, {localStorage.username}!
+              </Link>
+            </div>
+            <div id="nav-username">
+              <button
+                id="nav-username"
+                className="button-default"
+                onClick={toggle}
+              >
+                add a project
+              </button>
+              <ProjectModal isShowing={isShowing} hide={toggle} />
+            </div>
+          </div>
         ) : (
           <div id="nav-username">
             <button className="button-default" onClick={toggle}>

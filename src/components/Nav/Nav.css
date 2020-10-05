@@ -27,9 +27,12 @@ nav a {
   font-size: 13px;
   display: flex;
   flex-wrap: wrap;
+
   justify-content: flex-end;
+
   vertical-align: top;
   z-index: 1;
+  color: aliceblue;
 }
 
 button#nav-username {
