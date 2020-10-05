@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useModal from "../Modals/useModal";
+import LoginModal from "../Modals/LoginModal";
 import ProgressBar from "./ProgressBar";
 
 function ProjectCard(props) {
@@ -8,7 +10,7 @@ function ProjectCard(props) {
   const progress = Math.round(
     (projectData.total_pledge_hours / projectData.goal_hours) * 100
   );
-
+  const { isShowing, toggle } = useModal();
   //template
 
   return (
@@ -22,10 +24,17 @@ function ProjectCard(props) {
           <p style={{ margin: "5px" }}>{projectData.category.join(", ")}</p>
         </Link>
       ) : (
-        <Link to={`/login`}>
+        // <Link to={`/login`}>
+        //   <img alt="" src={projectData.image} />
+        //   <h3 style={{ margin: "0" }}>{projectData.title}</h3>
+        // </Link>
+        <div>
           <img alt="" src={projectData.image} />
-          <h3 style={{ margin: "0" }}>{projectData.title}</h3>
-        </Link>
+          <button className="button-default" onClick={toggle}>
+            <h3 style={{ margin: "0" }}>{projectData.title}</h3>
+          </button>
+          <LoginModal isShowing={isShowing} hide={toggle} />
+        </div>
       )}
     </div>
   );

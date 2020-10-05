@@ -75,7 +75,7 @@ function ProjectForm(props) {
   return (
     <div>
       <form>
-        <div>
+        <div className="forms">
           <label htmlFor="title">title:</label>
           <input
             type="text"
@@ -85,22 +85,22 @@ function ProjectForm(props) {
           />
         </div>
 
-        <div>
+        <div className="forms">
           <label htmlFor="description">description:</label>
           <input
             type="text"
             id="description"
-            placeholder="what's your project about"
+            placeholder="add a brief description"
             onChange={handleChange}
           />
         </div>
 
-        <div>
+        <div className="forms">
           <label htmlFor="goal_hours">goal hours:</label>
           <input type="number" id="goal_hours" onChange={handleChange} />
         </div>
 
-        <div>
+        <div className="forms">
           <label htmlFor="image">add an image url:</label>
           <input
             type="text"
@@ -110,7 +110,7 @@ function ProjectForm(props) {
           />
         </div>
 
-        <div>
+        <div className="forms">
           <label htmlFor="category">category:</label>
           <select
             type="dropdown"
@@ -126,7 +126,7 @@ function ProjectForm(props) {
           </select>
         </div>
 
-        <button className="button" type="submit" onClick={handleSubmit}>
+        <button className="button-default" type="submit" onClick={handleSubmit}>
           Submit
         </button>
       </form>
