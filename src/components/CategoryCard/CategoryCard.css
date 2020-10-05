@@ -51,12 +51,24 @@
   object-fit: cover;
 }
 
+.category-card button h3 {
+  /* border: 1px solid black; */
+  font-family: monospace;
+  margin: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
 .category-card h3 {
   margin: 0;
   /* border: 1px solid black; */
   margin-inline-start: 15%;
   margin-inline-end: 15%;
   font-size: medium;
+}
+
+.category-card a:hover {
+  opacity: 0.3;
+  z-index: 0;
 }
 
 #category-page img {

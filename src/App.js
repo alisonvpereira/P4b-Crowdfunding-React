@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
-// import LoginPage from "./pages/LoginPage";
-import LogoutPage from "./pages/LogoutPage";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import ProjectListPage from "./pages/ProjectListPage";
@@ -49,12 +47,7 @@ function App() {
           <Route path="/users">
             <UserListPage />
           </Route>
-          {/* <Route path="/login">
-            <LoginPage />
-          </Route> */}
-          <Route path="/logout">
-            <LogoutPage />
-          </Route>
+
           <Route path="/">
             <HomePage />
           </Route>
