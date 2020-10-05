@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import "../Forms/Forms.css";
 
 function PledgeForm() {
   //variables
@@ -87,7 +88,7 @@ function PledgeForm() {
   return (
     <div>
       <form>
-        <div>
+        <div className="forms">
           <label htmlFor="comment">comment:</label>
           <input
             type="text"
@@ -97,32 +98,36 @@ function PledgeForm() {
           />
         </div>
 
-        <div>
+        <div className="forms">
           <label htmlFor="hours">hours:</label>
           <input type="number" id="hours" onChange={handleChange} />
         </div>
 
-        <div>
+        <div className="forms">
           <label htmlFor="anonymous">pledge anonymously:</label>
-          <input
-            type="radio"
-            id="anonymous"
-            name="anonymous"
-            value="true"
-            onChange={handleChange}
-          />
-          <label htmlFor="anonymous">Yes</label>
-          <input
-            type="radio"
-            id="anonymous"
-            name="anonymous"
-            value="false"
-            onChange={handleChange}
-          />
-          <label htmlFor="false">No</label>
+
+          <div className="forms-radio">
+            <input
+              type="radio"
+              id="anonymous"
+              name="anonymous"
+              value="true"
+              onChange={handleChange}
+            />
+
+            <label htmlFor="anonymous">Yes</label>
+            <input
+              type="radio"
+              id="anonymous"
+              name="anonymous"
+              value="false"
+              onChange={handleChange}
+            />
+            <label htmlFor="false">No</label>
+          </div>
         </div>
 
-        <div>
+        <div className="forms">
           {/* <label htmlFor="project_id">project:</label> */}
           {/* <select
             type="dropdown"
@@ -152,7 +157,7 @@ function PledgeForm() {
           </select>
         </div>
 
-        <button className="button" type="submit" onClick={handleSubmit}>
+        <button className="button-default" type="submit" onClick={handleSubmit}>
           Submit
         </button>
       </form>

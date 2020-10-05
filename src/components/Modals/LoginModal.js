@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import LoginForm from "../Forms/LoginForm";
 
-const Modal = ({ isShowing, hide }) =>
+const LoginModal = ({ isShowing, hide }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -27,7 +27,6 @@ const Modal = ({ isShowing, hide }) =>
                 </button>
               </div>
               <LoginForm />
-              {/* <p>Hello, I'm a modal.</p> */}
             </div>
           </div>
         </React.Fragment>,
@@ -35,4 +34,4 @@ const Modal = ({ isShowing, hide }) =>
       )
     : null;
 
-export default Modal;
+export default LoginModal;

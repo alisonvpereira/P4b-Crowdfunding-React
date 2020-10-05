@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "../Forms/Forms.css";
 
 function LoginForm() {
   //variables
@@ -52,7 +53,7 @@ function LoginForm() {
 
   return (
     <form>
-      <div>
+      <div className="forms">
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -61,7 +62,7 @@ function LoginForm() {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div className="forms">
         <label htmlFor="password">Password:</label>
         <input
           type="password"
@@ -70,7 +71,7 @@ function LoginForm() {
           onChange={handleChange}
         />
       </div>
-      <button type="submit" onClick={handleSubmit}>
+      <button className="button-default" type="submit" onClick={handleSubmit}>
         Login
       </button>
     </form>

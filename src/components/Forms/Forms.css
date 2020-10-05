@@ -1,0 +1,42 @@
+/* * {
+  border: 1px solid hotpink;
+} */
+
+form {
+  text-align: center;
+  font-family: monospace;
+  /* width: max-content; */
+}
+
+div.forms {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px 2% 10px;
+}
+
+div.forms label {
+  text-align: center;
+  color: white;
+  background-color: darkgrey;
+  padding: 5px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.forms input {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid darkgrey;
+  border-radius: 0px 0px 5px 5px;
+  color: #5729ce;
+  font-family: monospace;
+  font-weight: bolder;
+  font-size: large;
+}
+
+div.forms-radio label {
+  color: #5729ce;
+  font-family: monospace;
+  font-weight: bolder;
+  font-size: large;
+  background-color: unset;
+}

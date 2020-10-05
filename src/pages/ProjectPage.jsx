@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import PledgeForm from "../components/Forms/PledgeForm";
 import ProgressBar from "../components/ProjectCard/ProgressBar";
+import useModal from "../components/Modals/useModal";
+import PledgeModal from "../components/Modals/PledgeModal";
 // import { oneProject } from "../data";
 
 function ProjectPage() {
@@ -12,6 +14,7 @@ function ProjectPage() {
   );
   const created_date = new Date(projectData.date_created);
   const closed_date = new Date(projectData.date_updated);
+  const { isShowing, toggle } = useModal();
 
   // console.log(projectData.total_pledge_hours);
   useEffect(() => {
@@ -93,9 +96,11 @@ function ProjectPage() {
         })}
       </div>
 
-      <div id="pledge-list">
-        {projectData.total_pledge_hours > 1 ? <h3>add a pledge</h3> : null}
-        <PledgeForm />
+      <div id="user-page-text">
+        <button className="button-default" onClick={toggle}>
+          add a pledge
+        </button>
+        <PledgeModal isShowing={isShowing} hide={toggle} />
       </div>
     </div>
   );

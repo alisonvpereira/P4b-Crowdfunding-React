@@ -4,7 +4,7 @@ import "./Nav.css";
 import logo from "./skillender-logo-blk.png";
 import Logout from "../Forms/Logout";
 import useModal from "../Modals/useModal";
-import Modal from "../Modals/Modal";
+import LoginModal from "../Modals/LoginModal";
 
 function Nav() {
   const { isShowing, toggle } = useModal();
@@ -23,7 +23,7 @@ function Nav() {
             <button className="button-default" onClick={toggle}>
               Login
             </button>
-            <Modal isShowing={isShowing} hide={toggle} />
+            <LoginModal isShowing={isShowing} hide={toggle} />
           </div>
         )}
         {localStorage.username ? <Logout /> : ""}
