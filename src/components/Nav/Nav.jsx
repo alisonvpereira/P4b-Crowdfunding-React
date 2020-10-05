@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 import logo from "./skillender-logo-blk.png";
 import Logout from "../Forms/Logout";
+import useModal from "../Modals/useModal";
+import Modal from "../Modals/Modal";
 
 function Nav() {
+  const { isShowing, toggle } = useModal();
   return (
     <nav>
       <div>
@@ -16,9 +19,12 @@ function Nav() {
             welcome back, {localStorage.username}!
           </Link>
         ) : (
-          <Link id="nav-username" to="/login">
-            Login
-          </Link>
+          <div id="nav-username">
+            <button className="button-default" onClick={toggle}>
+              Login
+            </button>
+            <Modal isShowing={isShowing} hide={toggle} />
+          </div>
         )}
         {localStorage.username ? <Logout /> : ""}
       </div>
