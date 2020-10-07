@@ -4,6 +4,7 @@ import PledgeForm from "../components/Forms/PledgeForm";
 import ProgressBar from "../components/ProjectCard/ProgressBar";
 import useModal from "../components/Modals/useModal";
 import PledgeModal from "../components/Modals/PledgeModal";
+import ProjectEditModal from "../components/Modals/ProjectEditModal";
 // import { oneProject } from "../data";
 
 function ProjectPage() {
@@ -57,6 +58,19 @@ function ProjectPage() {
             <p>Listed by: {projectData.owner}</p>
           </a>
         </pre>
+        {localStorage.username === projectData.owner ? (
+          <div>
+            <button className="button-default" onClick={toggle}>
+              edit
+            </button>
+            <ProjectEditModal
+              project_id={id}
+              isShowing={isShowing}
+              hide={toggle}
+            />{" "}
+          </div>
+        ) : null}
+
         <p>{projectData.description}</p>
         <ProgressBar progress={progress} className="progress-bar" />
       </div>
@@ -95,12 +109,12 @@ function ProjectPage() {
         })}
       </div>
 
-      <div id="user-page-text">
-        {/* <button className="button-default" onClick={toggle}>
+      <div id="category-page-body">
+        <button className="button-default" onClick={toggle}>
           add a pledge
-        </button> */}
-        {/* <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} /> */}
-        <PledgeForm project_id={id} />
+        </button>
+        <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
+        {/* <PledgeForm project_id={id} /> */}
       </div>
     </div>
   );
