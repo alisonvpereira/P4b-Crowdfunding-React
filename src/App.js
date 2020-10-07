@@ -11,6 +11,7 @@ import SkillListPage from "./pages/SkillListPage";
 import UserListPage from "./pages/UserListPage";
 import UserPage from "./pages/UserPage";
 // import PledgePage from "./pages/PledgePage";
+
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           {/* <Route path="/pledges">
             <PledgePage />
           </Route> */}
+
           <Route path="/projects/:id">
             <ProjectPage />
           </Route>
