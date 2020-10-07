@@ -113,7 +113,7 @@ function ProjectPage() {
         <button className="button-default" onClick={toggle}>
           add a pledge
         </button>
-        <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
+        {/* <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} /> */}
         {/* <PledgeForm project_id={id} /> */}
       </div>
     </div>

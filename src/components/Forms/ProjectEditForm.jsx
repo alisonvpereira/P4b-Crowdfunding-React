@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-function ProjectEditForm(props) {
+function ProjectEditForm() {
   //variables
-
-  const { projectData } = props;
-  const { id } = props;
+  const [projectData, setProjectData] = useState({});
+  const { id } = useParams();
   const [categorylist, setCategoryList] = useState([]);
   const history = useHistory();
 
@@ -18,9 +17,19 @@ function ProjectEditForm(props) {
         setCategoryList(data);
       });
   }, []);
-  console.log();
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setProjectData(data);
+      });
+  }, [id]);
 
   const [credentials, setCredentials] = useState({
+    id: id,
     goal_hours: "",
     title: "",
     description: "",
@@ -31,11 +40,12 @@ function ProjectEditForm(props) {
 
   useEffect(() => {
     setCredentials({
-      goal_hours: projectData.goal_hours,
+      id: id,
       title: projectData.title,
+      goal_hours: projectData.goal_hours,
       description: projectData.description,
       image: projectData.image,
-      category: [projectData.category],
+      category: projectData.category,
       is_open: projectData.is_open,
     });
   }, [projectData]);
@@ -92,7 +102,7 @@ function ProjectEditForm(props) {
           <input
             type="text"
             id="title"
-            value={credentials.goal_hours}
+            value={credentials.title}
             onChange={handleChange}
           />
         </div>
@@ -102,14 +112,43 @@ function ProjectEditForm(props) {
           <input
             type="text"
             id="description"
-            placeholder="add a brief description"
+            value={credentials.description}
             onChange={handleChange}
           />
         </div>
 
         <div className="forms">
+          <label htmlFor="is_open">status:</label>
+
+          <div className="forms-radio">
+            <input
+              type="radio"
+              id="is_open"
+              name="is_open"
+              value="true"
+              onChange={handleChange}
+            />
+
+            <label htmlFor="is_open">active</label>
+            <input
+              type="radio"
+              id="is_open"
+              name="is_open"
+              value="false"
+              onChange={handleChange}
+            />
+            <label htmlFor="false">closed</label>
+          </div>
+        </div>
+
+        <div className="forms">
           <label htmlFor="goal_hours">goal hours:</label>
-          <input type="number" id="goal_hours" onChange={handleChange} />
+          <input
+            type="number"
+            id="goal_hours"
+            value={credentials.goal_hours}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="forms">
@@ -117,7 +156,7 @@ function ProjectEditForm(props) {
           <input
             type="text"
             id="image"
-            placeholder="https://wwww.addyourimage.com"
+            value={credentials.image}
             onChange={handleChange}
           />
         </div>
@@ -127,7 +166,7 @@ function ProjectEditForm(props) {
           <select
             type="dropdown"
             id="category"
-            placeholder="category"
+            value={credentials.category}
             onChange={handleChange}
           >
             {categorylist.map((s) => (
