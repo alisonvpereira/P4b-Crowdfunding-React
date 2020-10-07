@@ -46,9 +46,11 @@ function App() {
           <Route path="/users/:username">
             <UserPage />
           </Route>
-          <Route path="/users">
-            <UserListPage />
-          </Route>
+          {localStorage.username ? (
+            <Route path="/users">
+              <UserListPage />
+            </Route>
+          ) : null}
 
           <Route path="/">
             <HomePage />

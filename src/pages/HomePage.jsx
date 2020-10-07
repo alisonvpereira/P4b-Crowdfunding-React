@@ -2,6 +2,8 @@ import React from "react";
 import ProjectForm from "../components/Forms/ProjectForm";
 import useModal from "../components/Modals/useModal";
 import ProjectModal from "../components/Modals/ProjectModal";
+import CreateUserForm from "../components/Forms/CreateUserForm";
+import LoginForm from "../components/Forms/LoginForm";
 
 function HomePage() {
   const { isShowing, toggle } = useModal();
@@ -14,7 +16,16 @@ function HomePage() {
       <ProjectModal isShowing={isShowing} hide={toggle} />
     </div>
   ) : (
-    <h6>must be logged in</h6>
+    <div id="project-list">
+      <div>
+        <h2>create a profile</h2>
+        <CreateUserForm />
+      </div>
+      <div>
+        <h2>login</h2>
+        <LoginForm />
+      </div>
+    </div>
   );
 }
 
