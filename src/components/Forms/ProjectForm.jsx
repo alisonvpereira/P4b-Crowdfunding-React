@@ -65,10 +65,8 @@ function ProjectForm(props) {
 
       postData().then((response) => {
         console.log(response);
-        // window.location.reload();
+        history.push(`/projects/${response.id}`);
       });
-      // window.localStorage.setItem("project_id", response.id);
-      // history.push(`/projects/${id}`);
     }
   };
 

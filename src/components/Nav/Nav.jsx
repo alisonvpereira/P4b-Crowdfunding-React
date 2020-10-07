@@ -6,6 +6,8 @@ import Logout from "../Forms/Logout";
 import useModal from "../Modals/useModal";
 import LoginModal from "../Modals/LoginModal";
 import ProjectModal from "../Modals/ProjectModal";
+import CreateUserForm from "../Forms/CreateUserForm";
+import CreateUserModal from "../Modals/CreateUserModal";
 
 function Nav() {
   const { isShowing, toggle } = useModal();
@@ -34,11 +36,13 @@ function Nav() {
             </div>
           </div>
         ) : (
-          <div id="nav-username">
-            <button className="button-default" onClick={toggle}>
-              Login
-            </button>
-            <LoginModal isShowing={isShowing} hide={toggle} />
+          <div>
+            <div id="nav-username">
+              <button className="button-default" onClick={toggle}>
+                Login
+              </button>
+              <LoginModal isShowing={isShowing} hide={toggle} />
+            </div>
           </div>
         )}
         {localStorage.username ? <Logout /> : ""}
