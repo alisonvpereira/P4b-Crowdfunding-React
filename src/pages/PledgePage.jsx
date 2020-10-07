@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 
 import PledgeForm from "../components/Forms/PledgeForm";
 
-function PledgePage() {
-  const { id } = useParams();
+function PledgePage(props) {
+  const { id } = props;
 
-  return <PledgeForm id={id} />;
+  return <PledgeForm project_id={id} />;
 }
 
 export default PledgePage;

@@ -26,7 +26,6 @@ function ProjectPage() {
         setProjectData(data);
       });
   }, [id]);
-  window.localStorage.setItem("project_id", projectData.id);
 
   return (
     <div id="user-page">
@@ -100,7 +99,8 @@ function ProjectPage() {
         <button className="button-default" onClick={toggle}>
           add a pledge
         </button>
-        <PledgeModal isShowing={isShowing} hide={toggle} />
+        <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
+        <PledgeForm project_id={id} />
       </div>
     </div>
   );

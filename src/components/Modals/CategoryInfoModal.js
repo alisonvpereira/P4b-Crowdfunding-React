@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import CategoryInfo from "../../pages/CategoryInfo";
-import categoryList from "../../pages/CategoryListPage";
 
 const CategoryInfoModal = ({ isShowing, hide }) =>
   isShowing
@@ -27,6 +26,7 @@ const CategoryInfoModal = ({ isShowing, hide }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               <CategoryInfo />
             </div>
           </div>
