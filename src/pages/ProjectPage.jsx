@@ -96,10 +96,10 @@ function ProjectPage() {
       </div>
 
       <div id="user-page-text">
-        <button className="button-default" onClick={toggle}>
+        {/* <button className="button-default" onClick={toggle}>
           add a pledge
-        </button>
-        <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
+        </button> */}
+        {/* <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} /> */}
         <PledgeForm project_id={id} />
       </div>
     </div>

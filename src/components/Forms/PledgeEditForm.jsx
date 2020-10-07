@@ -32,10 +32,11 @@ function PledgeForm() {
   console.log(projectlist);
 
   const [credentials, setCredentials] = useState({
+    id: id,
     hours: "",
     comment: "",
     anonymous: "",
-    project_id: id,
+    project_id: "",
     skill: [],
   });
 
@@ -59,20 +60,23 @@ function PledgeForm() {
     let token = window.localStorage.getItem("token");
 
     //function you can call but carry on as well
-    const response = await fetch(`${process.env.REACT_APP_API_URL}pledges/`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
-      },
-      body: JSON.stringify(credentials),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}pledges/${id}`,
+      {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify(credentials),
+      }
+    );
     return response.json();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (credentials.hours != null) {
+    if (credentials.id != null) {
       console.log(credentials);
 
       postData().then((response) => {
@@ -127,8 +131,8 @@ function PledgeForm() {
         </div>
 
         <div className="forms">
-          {/* <label htmlFor="project_id">project:</label> */}
-          {/* <select
+          <label htmlFor="project_id">project:</label>
+          <select
             type="dropdown"
             defaultValue={id}
             id="project_id"
@@ -140,7 +144,7 @@ function PledgeForm() {
                 {s.title}
               </option>
             ))}
-          </select> */}
+          </select>
           <label htmlFor="skill">skill:</label>
           <select
             type="dropdown"

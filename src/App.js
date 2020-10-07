@@ -10,7 +10,7 @@ import SkillPage from "./pages/SkillPage";
 import SkillListPage from "./pages/SkillListPage";
 import UserListPage from "./pages/UserListPage";
 import UserPage from "./pages/UserPage";
-// import PledgePage from "./pages/PledgePage";
+import PledgePage from "./pages/PledgePage";
 
 import "./App.css";
 
@@ -21,8 +21,11 @@ function App() {
         <Nav />
 
         <Switch>
-          {/* <Route path="/pledges">
+          <Route path="/pledges/:id">
             <PledgePage />
+          </Route>
+          {/* <Route path="/pledges">
+            <PledgeListPage />
           </Route> */}
 
           <Route path="/projects/:id">

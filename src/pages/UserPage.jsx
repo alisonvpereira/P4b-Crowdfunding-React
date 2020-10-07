@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import PledgeEditForm from "../components/Forms/PledgeEditForm";
+import ProjectForm from "../components/Forms/ProjectForm";
 
 function UserPage() {
   const [userData, setUserData] = useState({
@@ -53,7 +55,10 @@ function UserPage() {
           {userData.user.owner_projects.length > 0 ? (
             <h3>related projects</h3>
           ) : (
-            <h3>no related projects</h3>
+            <div>
+              <h3>add your first project</h3>
+              <ProjectForm />
+            </div>
           )}
           {userData.user.owner_projects.map((projectData, i) => (
             <Link to={`/projects/${projectData.id}`}>
@@ -69,7 +74,10 @@ function UserPage() {
           {userData.user.pledges.length > 0 ? (
             <h3>related pledges</h3>
           ) : (
-            <h3>no related pledges</h3>
+            <div>
+              <h3>add your first pledge</h3>
+              <PledgeEditForm />
+            </div>
           )}
           {userData.user.pledges.map((pledge, i) => (
             <Link to={`/projects/${pledge.project_id}`}>
