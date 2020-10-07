@@ -40,7 +40,7 @@ function UserPage() {
 
           <p>Member Since: {date.toDateString()} </p>
 
-          <a href="mailto:${userData.user.email}">
+          <a href={`mailto:${userData.user.email}`}>
             <p>{userData.user.email}</p>
           </a>
         </pre>
