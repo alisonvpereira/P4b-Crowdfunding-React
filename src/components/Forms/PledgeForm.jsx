@@ -18,7 +18,7 @@ function PledgeForm() {
         setSkillList(data);
       });
   }, []);
-  console.log(skilllist);
+  // console.log(skilllist);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/`)
@@ -29,11 +29,11 @@ function PledgeForm() {
         setProjectList(data);
       });
   }, []);
-  console.log(projectlist);
+  // console.log();
 
   const [credentials, setCredentials] = useState({
     hours: "",
-    comment: "",
+    comment: "add a comment",
     anonymous: "",
     project_id: id,
     skill: [],
@@ -77,9 +77,10 @@ function PledgeForm() {
 
       postData().then((response) => {
         console.log(response);
-        history.push(`/projects/${credentials.project_id}`);
+        alert("pledge successfully added");
+        // history.push(`/projects/${credentials.project_id}`);
 
-        window.location.reload();
+        // window.location.reload();
       });
     }
   };
@@ -126,9 +127,9 @@ function PledgeForm() {
           </div>
         </div>
 
-        <div className="forms">
-          {/* <label htmlFor="project_id">project:</label> */}
-          {/* <select
+        <div className=" forms forms-dropdown">
+          <label htmlFor="project_id">project:</label>
+          <select
             type="dropdown"
             defaultValue={id}
             id="project_id"
@@ -140,7 +141,9 @@ function PledgeForm() {
                 {s.title}
               </option>
             ))}
-          </select> */}
+          </select>
+        </div>
+        <div className=" forms forms-dropdown">
           <label htmlFor="skill">skill:</label>
           <select
             type="dropdown"
@@ -155,10 +158,15 @@ function PledgeForm() {
             ))}
           </select>
         </div>
-
-        <button className="button-default" type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
+        <div>
+          <button
+            className="button-default"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

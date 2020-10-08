@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import PledgeEditForm from "../components/Forms/PledgeEditForm";
+import PledgeForm from "../components/Forms/PledgeForm";
 import ProjectForm from "../components/Forms/ProjectForm";
 
 function UserPage() {
@@ -76,7 +76,7 @@ function UserPage() {
           ) : (
             <div>
               <h3>add your first pledge</h3>
-              <PledgeEditForm />
+              <PledgeForm />
             </div>
           )}
           {userData.user.pledges.map((pledge, i) => (
