@@ -7,6 +7,10 @@ function ProjectEditForm() {
   const { id } = useParams();
   const [categorylist, setCategoryList] = useState([]);
   const history = useHistory();
+  const options = [
+    { key: 1, text: "Active", value: "true" },
+    { key: 2, text: "Closed", value: "false" },
+  ];
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}category/`)
@@ -93,7 +97,7 @@ function ProjectEditForm() {
       });
     }
   };
-
+  console.log(credentials, credentials.is_open);
   return (
     <div>
       <form>
@@ -117,28 +121,36 @@ function ProjectEditForm() {
           />
         </div>
 
-        <div className="forms">
+        <div className="forms forms-dropdown">
           <label htmlFor="is_open">status:</label>
+          <select
+            type="dropdown"
+            id="is_open"
+            value={credentials.is_open ? "true" : "false"}
+            onChange={handleChange}
+          >
+            {options.map((s) => (
+              <option key={s.text} value={s.value}>
+                {s.text}
+              </option>
+            ))}
+          </select>
+        </div>
 
-          <div className="forms-radio">
-            <input
-              type="radio"
-              id="is_open"
-              name="is_open"
-              value="true"
-              onChange={handleChange}
-            />
-
-            <label htmlFor="is_open">active</label>
-            <input
-              type="radio"
-              id="is_open"
-              name="is_open"
-              value="false"
-              onChange={handleChange}
-            />
-            <label htmlFor="false">closed</label>
-          </div>
+        <div className=" forms forms-dropdown">
+          <label htmlFor="category">category:</label>
+          <select
+            type="dropdown"
+            id="category"
+            value={credentials.category}
+            onChange={handleChange}
+          >
+            {categorylist.map((s) => (
+              <option key={s.name} value={s.name}>
+                {s.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="forms">
@@ -159,22 +171,6 @@ function ProjectEditForm() {
             value={credentials.image}
             onChange={handleChange}
           />
-        </div>
-
-        <div className="forms">
-          <label htmlFor="category">category:</label>
-          <select
-            type="dropdown"
-            id="category"
-            value={credentials.category}
-            onChange={handleChange}
-          >
-            {categorylist.map((s) => (
-              <option key={s.name} value={s.name}>
-                {s.name}
-              </option>
-            ))}
-          </select>
         </div>
 
         <button className="button-default" type="submit" onClick={handleSubmit}>

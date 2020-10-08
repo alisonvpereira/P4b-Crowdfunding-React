@@ -40,3 +40,27 @@ div.forms-radio label {
   font-size: large;
   background-color: unset;
 }
+
+div.forms-dropdown label {
+  text-align: center;
+  color: white;
+  background-color: darkgrey;
+  padding: 5px;
+  border-radius: 5px 0px 0px 5px;
+}
+div.forms-dropdown {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 40%;
+}
+
+.forms select {
+  text-align: center;
+  border: 1px solid darkgrey;
+  border-radius: 0px 5px 5px 0px;
+  color: #5729ce;
+  font-family: monospace;
+  font-weight: bolder;
+}

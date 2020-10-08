@@ -21,8 +21,8 @@ function ProjectForm(props) {
   const [credentials, setCredentials] = useState({
     goal_hours: "",
     title: "",
-    description: "",
-    image: "",
+    description: "add a brief description",
+    image: "https://picsum.photos/301",
     category: [],
     is_open: "true",
   });
