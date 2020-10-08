@@ -7,6 +7,8 @@ import PledgeModal from "../components/Modals/PledgeModal";
 import ProjectEditModal from "../components/Modals/ProjectEditModal";
 import ProjectDeleteModal from "../components/Modals/ProjectDeleteModal";
 import ProjectDeleteForm from "../components/Forms/ProjectDeleteForm";
+import PledgeDeleteForm from "../components/Forms/PledgeDeleteForm";
+import PledgeEditForm from "../components/Forms/PledgeEditForm";
 // import { oneProject } from "../data";
 
 function ProjectPage() {
@@ -106,6 +108,7 @@ function ProjectPage() {
                     ))
                   : ""}
                 {")"}
+                <PledgeEditForm id={pledgeData.id} hours={pledgeData.hours} />
               </p>
             </div>
           );

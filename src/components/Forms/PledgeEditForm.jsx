@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import "../Forms/Forms.css";
 
-function PledgeForm() {
+function PledgeEditForm(props) {
   //variables
-
-  const { id } = useParams();
+  const [pledgeData, setPledgeData] = useState({});
+  const { id } = props;
   const [skilllist, setSkillList] = useState([]);
   const [projectlist, setProjectList] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}skills/`)
@@ -18,7 +19,7 @@ function PledgeForm() {
         setSkillList(data);
       });
   }, []);
-  console.log(skilllist);
+  // console.log(skilllist);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}projects/`)
@@ -29,7 +30,18 @@ function PledgeForm() {
         setProjectList(data);
       });
   }, []);
-  console.log(projectlist);
+  // console.log(projectlist);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}pledges/${id}`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setPledgeData(data);
+      });
+  }, [id]);
+  console.log(pledgeData);
 
   const [credentials, setCredentials] = useState({
     id: id,
@@ -39,6 +51,16 @@ function PledgeForm() {
     project_id: "",
     skill: [],
   });
+
+  useEffect(() => {
+    setCredentials({
+      hours: pledgeData.hours,
+      comment: pledgeData.comment,
+      anonymous: pledgeData.anonymous,
+      project_id: pledgeData.project_id,
+      skill: pledgeData.skill,
+    });
+  }, [pledgeData]);
 
   // methods
   const handleChange = (e) => {
@@ -53,8 +75,6 @@ function PledgeForm() {
           [id]: value,
         }));
   };
-
-  const history = useHistory();
 
   const postData = async () => {
     let token = window.localStorage.getItem("token");
@@ -73,7 +93,7 @@ function PledgeForm() {
     );
     return response.json();
   };
-
+  console.log(credentials);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (credentials.id != null) {
@@ -96,14 +116,19 @@ function PledgeForm() {
           <input
             type="text"
             id="comment"
-            placeholder="add a comment"
+            value={credentials.comment}
             onChange={handleChange}
           />
         </div>
 
         <div className="forms">
           <label htmlFor="hours">hours:</label>
-          <input type="number" id="hours" onChange={handleChange} />
+          <input
+            type="number"
+            id="hours"
+            onChange={handleChange}
+            value={credentials.hours}
+          />
         </div>
 
         <div className="forms">
@@ -134,7 +159,7 @@ function PledgeForm() {
           <label htmlFor="project_id">project:</label>
           <select
             type="dropdown"
-            defaultValue={id}
+            value={credentials.project_id}
             id="project_id"
             placeholder="project_id"
             onChange={handleChange}
@@ -168,4 +193,4 @@ function PledgeForm() {
   );
 }
 
-export default PledgeForm;
+export default PledgeEditForm;

@@ -19,16 +19,16 @@ function PledgeDeleteForm() {
 
   const [credentials, setCredentials] = useState({
     id: id,
-    goal_hours: "",
+    hours: "",
   });
 
   useEffect(() => {
     setCredentials({
       id: id,
-      goal_hours: pledgeData.goal_hours,
+      hours: pledgeData.hours,
     });
   }, [pledgeData]);
-
+  console.log(pledgeData);
   const postData = async () => {
     let token = window.localStorage.getItem("token");
 
@@ -50,7 +50,7 @@ function PledgeDeleteForm() {
     if (credentials.id != null) {
       console.log(credentials);
       alert(
-        `are you sure you want to delele this pledge for ${credentials.goal_hours} hours?`
+        `are you sure you want to delele this pledge for ${credentials.hours} hours?`
       );
 
       postData().then((response) => {
@@ -63,13 +63,9 @@ function PledgeDeleteForm() {
   };
 
   return (
-    <div>
-      <form>
-        <button className="button-danger" type="submit" onClick={handleSubmit}>
-          Delete
-        </button>
-      </form>
-    </div>
+    <button className="button-danger" type="submit" onClick={handleSubmit}>
+      Delete
+    </button>
   );
 }
 
