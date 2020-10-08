@@ -71,6 +71,11 @@ a {
   text-align: start;
 }
 
+#user-page-text-buttons {
+  /* border: 1px hotpink solid; */
+  display: flex;
+}
+
 #user-page-body {
   /* display: block; */
   margin-left: 2%;

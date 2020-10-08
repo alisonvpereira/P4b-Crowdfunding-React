@@ -64,3 +64,7 @@ div.forms-dropdown {
   font-family: monospace;
   font-weight: bolder;
 }
+
+.button-danger {
+  background-color: red;
+}

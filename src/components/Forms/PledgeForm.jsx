@@ -52,7 +52,7 @@ function PledgeForm() {
           [id]: value,
         }));
   };
-
+  console.log(credentials);
   const history = useHistory();
 
   const postData = async () => {
@@ -78,9 +78,9 @@ function PledgeForm() {
       postData().then((response) => {
         console.log(response);
         alert("pledge successfully added");
-        // history.push(`/projects/${credentials.project_id}`);
+        history.push(`/projects/${credentials.project_id}`);
 
-        // window.location.reload();
+        window.location.reload();
       });
     }
   };
@@ -131,7 +131,7 @@ function PledgeForm() {
           <label htmlFor="project_id">project:</label>
           <select
             type="dropdown"
-            defaultValue={id}
+            value={id}
             id="project_id"
             placeholder="project_id"
             onChange={handleChange}

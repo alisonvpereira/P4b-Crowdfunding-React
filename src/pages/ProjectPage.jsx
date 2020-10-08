@@ -61,15 +61,20 @@ function ProjectPage() {
           </a>
         </pre>
         {localStorage.username === projectData.owner ? (
-          <div>
-            <button className="button-default" onClick={toggle}>
-              edit
-            </button>
-            <ProjectEditModal
-              project_id={id}
-              isShowing={isShowing}
-              hide={toggle}
-            />{" "}
+          <div id="user-page-text-buttons">
+            <div>
+              <button className="button-default" onClick={toggle}>
+                edit
+              </button>
+              <ProjectEditModal
+                project_id={id}
+                isShowing={isShowing}
+                hide={toggle}
+              />
+            </div>
+            <div>
+              <ProjectDeleteForm project_id={id}></ProjectDeleteForm>
+            </div>
           </div>
         ) : null}
 
@@ -78,14 +83,10 @@ function ProjectPage() {
       </div>
       <div id="pledge-list">
         <h3>
-          {projectData.total_pledge_hours < 1 ? (
-            "add the first a pledge"
-          ) : (
-            <span>
-              {projectData.total_pledge_hours} out of {projectData.goal_hours}{" "}
-              hours pledged so far
-            </span>
-          )}
+          <span>
+            Goal is {projectData.goal_hours} hours:{" "}
+            {projectData.total_pledge_hours} hours pledged so far
+          </span>
         </h3>
         {projectData.pledges.map((pledgeData, key) => {
           return (
@@ -112,21 +113,14 @@ function ProjectPage() {
       </div>
 
       <div id="category-page-body">
-        <button className="button-default" onClick={toggle}>
-          add a pledge
-        </button>
-        <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
-        {/* <PledgeForm project_id={id} /> */}
-      </div>
-      <div id="category-page-body">
-        <button className="button-default" onClick={toggle}>
-          Delete Project
-        </button>
-        <ProjectDeleteForm
-          project_id={id}
-          isShowing={isShowing}
-          hide={toggle}
-        />
+        {localStorage.username === projectData.owner ? null : (
+          <div>
+            <button className="button-default" onClick={toggle}>
+              add a pledge
+            </button>
+            <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
+          </div>
+        )}
       </div>
     </div>
   );

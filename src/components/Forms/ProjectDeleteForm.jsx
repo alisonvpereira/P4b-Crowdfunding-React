@@ -5,7 +5,6 @@ function ProjectDeleteForm() {
   //variables
   const [projectData, setProjectData] = useState({});
   const { id } = useParams();
-  const { title } = useParams;
   const history = useHistory();
 
   useEffect(() => {
@@ -29,20 +28,6 @@ function ProjectDeleteForm() {
       title: projectData.title,
     });
   }, [projectData]);
-
-  // methods
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    id === "category"
-      ? setCredentials((prevCredentials) => ({
-          ...prevCredentials,
-          [id]: [value],
-        }))
-      : setCredentials((prevCredentials) => ({
-          ...prevCredentials,
-          [id]: value,
-        }));
-  };
 
   const postData = async () => {
     let token = window.localStorage.getItem("token");
@@ -77,11 +62,9 @@ function ProjectDeleteForm() {
 
   return (
     <div>
-      <form>
-        <button className="button-danger" type="submit" onClick={handleSubmit}>
-          Delete
-        </button>
-      </form>
+      <button className="button-danger" type="submit" onClick={handleSubmit}>
+        Delete
+      </button>
     </div>
   );
 }

@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import "../Forms/Forms.css";
+import { useHistory, useParams } from "react-router-dom";
 
-function PledgDeleteForm(props) {
+function PledgeDeleteForm() {
   //variables
-
   const [pledgeData, setPledgeData] = useState({});
   const { id } = useParams();
   const history = useHistory();
-
-  console.log(id);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}pledges/${id}`)
@@ -21,27 +17,60 @@ function PledgDeleteForm(props) {
       });
   }, [id]);
 
-  // methods
-  const handleSubmit = (e) => {
-    let token = localStorage.getItem("token");
-    fetch(`${process.env.REACT_APP_API_URL}pledges/${id}`, {
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
-      },
+  const [credentials, setCredentials] = useState({
+    id: id,
+    goal_hours: "",
+  });
+
+  useEffect(() => {
+    setCredentials({
+      id: id,
+      goal_hours: pledgeData.goal_hours,
     });
-    history.push("/");
-    window.location.reload();
+  }, [pledgeData]);
+
+  const postData = async () => {
+    let token = window.localStorage.getItem("token");
+
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}pledges/${id}`,
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify(credentials),
+      }
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (credentials.id != null) {
+      console.log(credentials);
+      alert(
+        `are you sure you want to delele this pledge for ${credentials.goal_hours} hours?`
+      );
+
+      postData().then((response) => {
+        console.log(response);
+        // window.location.reload();
+        alert("pledge deleted");
+        window.location.reload();
+      });
+    }
   };
 
   return (
     <div>
-      <button onClick={handleSubmit}>
-        are you sure you want to delete your pledge
-      </button>
+      <form>
+        <button className="button-danger" type="submit" onClick={handleSubmit}>
+          Delete
+        </button>
+      </form>
     </div>
   );
 }
 
-export default PledgDeleteForm;
+export default PledgeDeleteForm;
