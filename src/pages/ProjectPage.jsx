@@ -108,7 +108,10 @@ function ProjectPage() {
                     ))
                   : ""}
                 {")"}
-                <PledgeEditForm id={pledgeData.id} hours={pledgeData.hours} />
+                <Link id="" to={`/pledges/${pledgeData.id}`}>
+                  edit pledge
+                </Link>
+                <PledgeEditForm id={pledgeData.id} />
               </p>
             </div>
           );
@@ -121,7 +124,7 @@ function ProjectPage() {
             <button className="button-default" onClick={toggle}>
               add a pledge
             </button>
-            <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
+            {/* <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} /> */}
           </div>
         )}
       </div>

@@ -54,6 +54,7 @@ function PledgeEditForm(props) {
 
   useEffect(() => {
     setCredentials({
+      id: id,
       hours: pledgeData.hours,
       comment: pledgeData.comment,
       anonymous: pledgeData.anonymous,

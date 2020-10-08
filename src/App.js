@@ -25,7 +25,7 @@ function App() {
             <PledgePage />
           </Route>
           {/* <Route path="/pledges">
-            <PledgeListPage />
+            <PledgePage />
           </Route> */}
 
           <Route path="/projects/:id">
