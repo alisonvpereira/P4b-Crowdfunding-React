@@ -20,9 +20,9 @@ function PledgePage(props) {
   console.log(pledgeData);
 
   return (
-    <PledgeEditForm id={pledgeData.id} />
-    // <PledgeEditForm id={id} />;
-    // <PledgeForm project_id={id} />;
+    <div id="user-page">
+      <PledgeEditForm id={pledgeData.id} />
+    </div>
   );
 }
 

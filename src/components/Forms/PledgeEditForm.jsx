@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import "../Forms/Forms.css";
+import PledgeDeleteForm from "./PledgeDeleteForm";
 
 function PledgeEditForm(props) {
   //variables
@@ -102,6 +103,7 @@ function PledgeEditForm(props) {
 
       postData().then((response) => {
         console.log(response);
+
         history.push(`/projects/${credentials.project_id}`);
 
         window.location.reload();
@@ -187,8 +189,9 @@ function PledgeEditForm(props) {
         </div>
 
         <button className="button-default" type="submit" onClick={handleSubmit}>
-          Submit
+          save
         </button>
+        <PledgeDeleteForm>delete</PledgeDeleteForm>
       </form>
     </div>
   );

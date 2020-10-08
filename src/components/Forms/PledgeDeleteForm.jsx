@@ -58,13 +58,14 @@ function PledgeDeleteForm() {
         // window.location.reload();
         alert("pledge deleted");
         window.location.reload();
+        history.goBack();
       });
     }
   };
 
   return (
     <button className="button-danger" type="submit" onClick={handleSubmit}>
-      Delete
+      delete
     </button>
   );
 }

@@ -49,7 +49,6 @@ function UserPage() {
 
         <p>{userData.bio}</p>
       </div>
-
       {userData.user.owner_projects ? (
         <div id="user-page-body">
           {userData.user.owner_projects.length > 0 ? (
@@ -73,10 +72,9 @@ function UserPage() {
           ) : null}
         </div>
       ) : null}
-
       {userData.user.pledges ? (
         <div id="user-page-body">
-          {userData.user.owner_projects.length > 0 ? (
+          {userData.user.pledges.length > 0 ? (
             <h3>related pledges</h3>
           ) : (
             <h3>no related pledges</h3>
