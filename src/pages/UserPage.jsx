@@ -56,8 +56,7 @@ function UserPage() {
             <h3>related projects</h3>
           ) : (
             <div>
-              <h3>add your first project</h3>
-              <ProjectForm />
+              <h3>no related projects</h3>
             </div>
           )}
           {userData.user.owner_projects.map((projectData, i) => (
@@ -66,18 +65,21 @@ function UserPage() {
               {i < userData.user.owner_projects.length - 1 ? "," : ""}
             </Link>
           ))}
+          {userData.username === localStorage.username ? (
+            <div>
+              <h3>add a project</h3>
+              <ProjectForm />
+            </div>
+          ) : null}
         </div>
       ) : null}
 
       {userData.user.pledges ? (
         <div id="user-page-body">
-          {userData.user.pledges.length > 0 ? (
+          {userData.user.owner_projects.length > 0 ? (
             <h3>related pledges</h3>
           ) : (
-            <div>
-              <h3>add your first pledge</h3>
-              <PledgeForm />
-            </div>
+            <h3>no related pledges</h3>
           )}
           {userData.user.pledges.map((pledge, i) => (
             <Link to={`/projects/${pledge.project_id}`}>
@@ -85,11 +87,15 @@ function UserPage() {
               {i < userData.user.pledges.length - 1 ? "," : ""}
             </Link>
           ))}
+
+          {userData.username === localStorage.username ? (
+            <div>
+              <h3>add a pledge</h3>
+              <PledgeForm />
+            </div>
+          ) : null}
         </div>
       ) : null}
-      {/* {userData.user.username === localStorage.username ? (
-        <ProfileUpdateForm />
-      ) : null} */}
     </div>
   );
 }

@@ -57,7 +57,7 @@ function ProjectForm(props) {
     });
     return response.json();
   };
-
+  console.log(credentials);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (credentials.goal_hours != null) {
