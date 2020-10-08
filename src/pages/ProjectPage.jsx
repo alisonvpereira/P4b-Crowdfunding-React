@@ -5,6 +5,8 @@ import ProgressBar from "../components/ProjectCard/ProgressBar";
 import useModal from "../components/Modals/useModal";
 import PledgeModal from "../components/Modals/PledgeModal";
 import ProjectEditModal from "../components/Modals/ProjectEditModal";
+import ProjectDeleteModal from "../components/Modals/ProjectDeleteModal";
+import ProjectDeleteForm from "../components/Forms/ProjectDeleteForm";
 // import { oneProject } from "../data";
 
 function ProjectPage() {
@@ -113,8 +115,18 @@ function ProjectPage() {
         <button className="button-default" onClick={toggle}>
           add a pledge
         </button>
-        {/* <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} /> */}
+        <PledgeModal project_id={id} isShowing={isShowing} hide={toggle} />
         {/* <PledgeForm project_id={id} /> */}
+      </div>
+      <div id="category-page-body">
+        <button className="button-default" onClick={toggle}>
+          Delete Project
+        </button>
+        <ProjectDeleteForm
+          project_id={id}
+          isShowing={isShowing}
+          hide={toggle}
+        />
       </div>
     </div>
   );

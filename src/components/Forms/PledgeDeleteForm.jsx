@@ -37,9 +37,6 @@ function PledgDeleteForm(props) {
 
   return (
     <div>
-      <h2>pledge id: {pledgeData.id}</h2>
-      <h2>project: {pledgeData.project_name}</h2>
-
       <button onClick={handleSubmit}>
         are you sure you want to delete your pledge
       </button>

@@ -65,7 +65,10 @@ function ProjectForm(props) {
 
       postData().then((response) => {
         console.log(response);
-        history.push(`/projects/${response.id}`);
+        if (response.id != null) {
+          alert(`${response.title} successfully created`);
+          history.push(`/projects/${response.id}`);
+        } else alert(`not created`);
       });
     }
   };

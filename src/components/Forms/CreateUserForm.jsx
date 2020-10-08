@@ -44,6 +44,7 @@ function CreateUserForm(props) {
       postData().then((response) => {
         console.log(response);
         window.location.reload();
+        alert(`response: ${response.response}`);
       });
     }
   };
@@ -76,7 +77,12 @@ function CreateUserForm(props) {
           <input type="password" id="password" onChange={handleChange} />
         </div>
 
-        <button className="button-default" type="submit" onClick={handleSubmit}>
+        <button
+          className="button-default"
+          type="submit"
+          onClick={() => alert(`${localStorage.response}`)}
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </form>
