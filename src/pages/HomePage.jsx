@@ -2,7 +2,7 @@ import React from "react";
 import ProjectForm from "../components/Forms/ProjectForm";
 import useModal from "../components/Modals/useModal";
 import ProjectModal from "../components/Modals/ProjectModal";
-import CreateUserForm from "../components/Forms/CreateUserForm";
+import UserCreateForm from "../components/Forms/UserCreateForm";
 import LoginForm from "../components/Forms/LoginForm";
 
 function HomePage() {
@@ -19,7 +19,7 @@ function HomePage() {
     <div id="project-list">
       <div>
         <h2>create a profile</h2>
-        <CreateUserForm />
+        <UserCreateForm />
       </div>
       <div>
         <h2>login</h2>

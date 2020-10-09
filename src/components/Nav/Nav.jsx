@@ -6,8 +6,8 @@ import Logout from "../Forms/Logout";
 import useModal from "../Modals/useModal";
 import LoginModal from "../Modals/LoginModal";
 import ProjectModal from "../Modals/ProjectModal";
-import CreateUserForm from "../Forms/CreateUserForm";
-import CreateUserModal from "../Modals/CreateUserModal";
+import UserCreateForm from "../Forms/UserCreateForm";
+import UserCreateModal from "../Modals/UserCreateModal";
 
 function Nav() {
   const { isShowing, toggle } = useModal();

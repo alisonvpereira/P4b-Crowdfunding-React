@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-function CreateUserForm(props) {
+function UserCreateForm(props) {
   //variables
 
   const { id } = props;
@@ -90,4 +90,4 @@ function CreateUserForm(props) {
   );
 }
 
-export default CreateUserForm;
+export default UserCreateForm;

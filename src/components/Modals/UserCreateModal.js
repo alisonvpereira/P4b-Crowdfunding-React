@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CreateUserForm from "../Forms/CreateUserForm";
+import UserCreateForm from "../Forms/UserCreateForm";
 
-const CreateUserModal = ({ isShowing, hide }) =>
+const UserCreateModal = ({ isShowing, hide }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -26,7 +26,7 @@ const CreateUserModal = ({ isShowing, hide }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <CreateUserForm />
+              <UserCreateForm />
             </div>
           </div>
         </React.Fragment>,
@@ -34,4 +34,4 @@ const CreateUserModal = ({ isShowing, hide }) =>
       )
     : null;
 
-export default CreateUserModal;
+export default UserCreateModal;
