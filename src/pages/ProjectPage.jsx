@@ -95,9 +95,13 @@ function ProjectPage() {
             <div id="pledge-list">
               <p>
                 {pledgeData.hours} hour{pledgeData.hours === 1 ? "" : "s"} from{" "}
-                <Link id="" to={`/users/${pledgeData.volunteer}`}>
-                  {pledgeData.volunteer}
-                </Link>
+                {pledgeData.anonymous === true ? (
+                  "anonymous"
+                ) : (
+                  <Link id="" to={`/users/${pledgeData.volunteer}`}>
+                    {pledgeData.volunteer}
+                  </Link>
+                )}
                 {" ("}
                 {pledgeData.skill != null
                   ? pledgeData.skill.map((skill, i) => (
