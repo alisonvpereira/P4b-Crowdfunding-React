@@ -3,6 +3,11 @@
   padding-top: 2rem;
 }
 
+.homepage {
+  width: 450px;
+  font-family: monospace;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
