@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import CategoryInfoModal from "../Modals/CategoryInfoModal";
 import useModal from "../Modals/useModal";
+import LoginModal from "../Modals/LoginModal";
 
 function CategoryCard(props) {
   //variables
@@ -19,22 +20,14 @@ function CategoryCard(props) {
           <h3>{categoryData.name}</h3>
         </Link>
       ) : (
-        // <div>
-        //   <img alt="" src={categoryData.image} />
-        //   <button className="button-default" onClick={toggle}>
-        //     <h3>{categoryData.name}</h3>
-        //   </button>
-        //   <CategoryInfoModal
-        //     key={key}
-        //     categoryData={categoryData}
-        //     isShowing={isShowing}
-        //     hide={toggle}
-        //   />
-        // </div>
-        <Link to={`/login`}>
+        <div className="category-card">
           <img alt="" src={categoryData.image} />
-          <h3>{categoryData.name}</h3>
-        </Link>
+          <button className="button-default" onClick={toggle}>
+            <h3>{categoryData.name}</h3>
+          </button>
+
+          <LoginModal isShowing={isShowing} hide={toggle} />
+        </div>
       )}
     </div>
   );

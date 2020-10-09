@@ -77,6 +77,7 @@ function LoginForm() {
       <button className="button-default" type="submit" onClick={handleSubmit}>
         Login
       </button>
+      <a href="/"> create a profile</a>
     </form>
   );
 }
