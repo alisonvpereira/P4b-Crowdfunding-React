@@ -21,10 +21,6 @@ function HomePage() {
         <h2>create a profile</h2>
         <UserCreateForm />
       </div>
-      <div>
-        <h2>login</h2>
-        <LoginForm />
-      </div>
     </div>
   );
 }

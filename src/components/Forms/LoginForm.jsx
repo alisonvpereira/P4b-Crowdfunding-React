@@ -37,11 +37,14 @@ function LoginForm() {
     e.preventDefault();
     if (credentials.username && credentials.password) {
       postData().then((response) => {
-        window.localStorage.setItem("token", response.token);
-        window.localStorage.setItem("username", credentials.username);
-        window.localStorage.setItem("isAuthenticated", "True");
-        // history.push("/");
-        window.location.reload();
+        console.log(response);
+        if (response.token) {
+          window.localStorage.setItem("username", credentials.username);
+          window.localStorage.setItem("token", response.token);
+          window.localStorage.setItem("isAuthenticated", "True");
+          // history.push("/");
+          window.location.reload();
+        } else alert("incorrect username or password");
       });
     }
   };

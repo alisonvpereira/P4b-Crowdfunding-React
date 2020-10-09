@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import PledgeForm from "../components/Forms/PledgeForm";
 import ProjectForm from "../components/Forms/ProjectForm";
+import useModal from "../components/Modals/useModal";
+import UserEditProfileForm from "../components/Forms/UserProfileEditForm";
+import UserProfileEditModal from "../components/Modals/UserProfileEditModal";
+import UserDeleteForm from "../components/Forms/UserDeleteForm";
 
 function UserPage() {
   const [userData, setUserData] = useState({
@@ -9,6 +13,7 @@ function UserPage() {
   });
   const { username } = useParams();
   const date = new Date(userData.created_at);
+  const { isShowing, toggle } = useModal();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
@@ -19,7 +24,7 @@ function UserPage() {
         setUserData(data, user);
       });
   }, [username]);
-  console.log(userData.user.owner_projects);
+  // console.log(userData.user.owner_projects);
   return (
     <div id="user-page">
       <img className="user-card" alt="" src={userData.image} />
@@ -46,6 +51,27 @@ function UserPage() {
             <p>{userData.user.email}</p>
           </a>
         </pre>
+
+        {localStorage.username === userData.username ? (
+          <div id="user-page-text-buttons">
+            <div>
+              <button className="button-default" onClick={toggle}>
+                edit
+              </button>
+              {/* <UserEditProfileForm
+                username={userData.username}
+              ></UserEditProfileForm> */}
+              <UserProfileEditModal
+                username={userData.username}
+                isShowing={isShowing}
+                hide={toggle}
+              />
+            </div>
+            <div>
+              <UserDeleteForm username={userData.username}></UserDeleteForm>
+            </div>
+          </div>
+        ) : null}
 
         <p>{userData.bio}</p>
       </div>
