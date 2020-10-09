@@ -4,6 +4,8 @@
 
 a {
   text-decoration: none;
+  /* text-decoration-style: dotted;
+  text-decoration-color: rgb(237, 13, 217); */
 }
 
 #user-page {
@@ -78,6 +80,7 @@ a {
 
 #user-page-body {
   /* display: block; */
+  /* border: 1px hotpink solid; */
   margin-left: 2%;
   width: 47%;
 }
@@ -93,5 +96,12 @@ a {
 }
 
 #user-page-body a {
-  padding: 2px 0px 0px 10px;
+  /* border: 1px hotpink solid; */
+  padding: 2px 10px 0px 0px;
+}
+
+#user-page-section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }

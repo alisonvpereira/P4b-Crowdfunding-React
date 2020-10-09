@@ -49,51 +49,61 @@ function UserPage() {
 
         <p>{userData.bio}</p>
       </div>
-      {userData.user.owner_projects ? (
-        <div id="user-page-body">
-          {userData.user.owner_projects.length > 0 ? (
-            <h3>related projects</h3>
-          ) : (
-            <div>
-              <h3>no related projects</h3>
-            </div>
-          )}
-          {userData.user.owner_projects.map((projectData, i) => (
-            <Link to={`/projects/${projectData.id}`}>
-              {projectData.title}
-              {i < userData.user.owner_projects.length - 1 ? "," : ""}
-            </Link>
-          ))}
-          {userData.username === localStorage.username ? (
-            <div>
-              <h3>add a project</h3>
-              <ProjectForm />
-            </div>
-          ) : null}
-        </div>
-      ) : null}
-      {userData.user.pledges ? (
-        <div id="user-page-body">
-          {userData.user.pledges.length > 0 ? (
-            <h3>related pledges</h3>
-          ) : (
-            <h3>no related pledges</h3>
-          )}
-          {userData.user.pledges.map((pledge, i) => (
-            <Link to={`/projects/${pledge.project_id}`}>
-              {pledge.project_title}
-              {i < userData.user.pledges.length - 1 ? "," : ""}
-            </Link>
-          ))}
 
-          {userData.username === localStorage.username ? (
-            <div>
-              <h3>add a pledge</h3>
-              <PledgeForm />
+      <div id="user-page-section">
+        {userData.user.owner_projects ? (
+          <div id="user-page-body">
+            {userData.user.owner_projects.length > 0 ? (
+              <h3>related projects</h3>
+            ) : (
+              <div>
+                <h3>no related projects</h3>
+              </div>
+            )}
+            <div id="user-page-text">
+              {userData.user.owner_projects.map((projectData, i) => (
+                <Link to={`/projects/${projectData.id}`}>
+                  {projectData.title}
+                  {i < userData.user.owner_projects.length - 1 ? "," : ""}
+                </Link>
+              ))}
             </div>
-          ) : null}
-        </div>
-      ) : null}
+          </div>
+        ) : null}
+
+        {userData.user.pledges ? (
+          <div id="user-page-body">
+            {userData.user.pledges.length > 0 ? (
+              <h3>related pledges</h3>
+            ) : (
+              <h3>no related pledges</h3>
+            )}
+            <div id="user-page-text">
+              {userData.user.pledges.map((pledge, i) => (
+                <Link to={`/projects/${pledge.project_id}`}>
+                  {pledge.project_title}
+                  {i < userData.user.pledges.length - 1 ? "," : ""}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </div>
+      <div id="user-page-section">
+        {userData.username === localStorage.username ? (
+          <div id="user-page-body">
+            <h3>add a project</h3>
+            <ProjectForm />
+          </div>
+        ) : null}
+
+        {userData.username === localStorage.username ? (
+          <div id="user-page-body">
+            <h3>add a pledge</h3>
+            <PledgeForm />
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
