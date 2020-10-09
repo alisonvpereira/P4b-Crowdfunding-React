@@ -28,7 +28,7 @@ function UserPage() {
   return (
     <div id="user-page">
       <img className="user-card" alt="" src={userData.image} />
-      <div id="user-page-text">
+      <div id="user-page-text" style={{ width: "70%" }}>
         <pre>
           <h2>{userData.fullname ? userData.fullname : userData.username}</h2>
 
@@ -105,12 +105,29 @@ function UserPage() {
               <h3>no related pledges</h3>
             )}
             <div id="user-page-text">
-              {userData.user.pledges.map((pledge, i) => (
-                <Link to={`/projects/${pledge.project_id}`}>
-                  {pledge.project_title}
-                  {i < userData.user.pledges.length - 1 ? "," : ""}
-                </Link>
-              ))}
+              {userData.user.pledges.map((pledge, i) =>
+                pledge.anonymous === true &&
+                localStorage.username != userData.username ? null : (
+                  <li>
+                    {localStorage.username === userData.username ? (
+                      <button
+                        className="button"
+                        style={{ border: "0.5px solid white" }}
+                      >
+                        <Link id="" to={`/pledges/${pledge.id}`}>
+                          edit
+                        </Link>
+                      </button>
+                    ) : null}{" "}
+                    {pledge.anonymous === true ? "(anon) " : null}
+                    {pledge.hours} hour{pledge.hours === 1 ? "" : "s"} to{" "}
+                    <Link to={`/projects/${pledge.project_id}`}>
+                      {pledge.project_title}
+                      {/* {i < userData.user.pledges.length - 1 ? "," : ""} */}
+                    </Link>
+                  </li>
+                )
+              )}
             </div>
           </div>
         ) : null}

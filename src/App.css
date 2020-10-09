@@ -66,3 +66,7 @@ button {
   background: #5729ce;
   color: white;
 }
+
+li {
+  list-style-type: none;
+}
